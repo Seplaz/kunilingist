@@ -1,0 +1,7 @@
+.page {
+  block-size: 100dvb;
+  background-image: url('../../../public/images/background_2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

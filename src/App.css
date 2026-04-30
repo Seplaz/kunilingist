@@ -1,0 +1,29 @@
+html,
+body {
+  block-size: 100dvb;
+}
+
+body {
+  overflow: hidden;
+  background-color: #0b0c0f;
+}
+
+#root {
+  block-size: 100dvb;
+  overflow: hidden;
+}
+
+.reels {
+  block-size: 100dvb;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reel {
+  block-size: 100dvb;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
