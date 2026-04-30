@@ -7,7 +7,6 @@ import { ThirdPage } from './pages/ThirdPage/ThirdPage';
 export default function App() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const sectionRefs = useRef<Array<HTMLElement | null>>([]);
-  const touchStartYRef = useRef(0);
   const pages = useMemo(
     () => [<FirstPage />, <SecondPage />, <ThirdPage />],
     [],
@@ -16,12 +15,24 @@ export default function App() {
     const el = containerRef.current;
     if (!el) return;
     let locked = false;
+    let snapTimer: number | undefined;
     const scrollToIndex = (nextIndex: number) => {
       const clamped = Math.max(
         0,
         Math.min(sectionRefs.current.length - 1, nextIndex),
       );
       el.scrollTo({ top: clamped * el.clientHeight, behavior: 'smooth' });
+    };
+    const snapToNearest = () => {
+      const h = el.clientHeight || 1;
+      const idx = Math.round(el.scrollTop / h);
+      el.scrollTo({ top: idx * h, behavior: 'smooth' });
+    };
+    const scheduleSnap = (delayMs = 120) => {
+      if (snapTimer) window.clearTimeout(snapTimer);
+      snapTimer = window.setTimeout(() => {
+        snapToNearest();
+      }, delayMs);
     };
     const getActiveIndex = () => {
       const top = el.scrollTop;
@@ -40,33 +51,26 @@ export default function App() {
 
       window.setTimeout(() => (locked = false), 450);
     };
-    const onTouchStart: EventListener = (event) => {
-      const e = event as TouchEvent;
-      touchStartYRef.current = e.touches[0]?.clientY ?? 0;
+    const onScroll: EventListener = () => {
+      // На iOS Safari после жеста прокрутки контейнер может
+      // остаться в промежуточном положении — дотягиваем до ближайшего экрана.
+      if (locked) return;
+      scheduleSnap();
     };
-    const onTouchMove: EventListener = (event) => {
-      // На iOS Safari без этого жест может “утащить” контент,
-      // оставляя реальный сдвиг (пустоту сверху/снизу).
-      event.preventDefault();
-    };
-    const onTouchEnd: EventListener = (event) => {
-      const e = event as TouchEvent;
-      const endY = e.changedTouches[0]?.clientY ?? 0;
-      const dy = endY - touchStartYRef.current;
-
-      if (Math.abs(dy) < 40) return;
-      const dir = dy < 0 ? 1 : -1;
-      scrollToIndex(getActiveIndex() + dir);
+    const onTouchEnd: EventListener = () => {
+      if (locked) return;
+      scheduleSnap(0);
     };
     el.addEventListener('wheel', onWheel, { passive: false });
-    el.addEventListener('touchstart', onTouchStart, { passive: true });
-    el.addEventListener('touchmove', onTouchMove, { passive: false });
+    el.addEventListener('scroll', onScroll, { passive: true });
     el.addEventListener('touchend', onTouchEnd, { passive: true });
+    el.addEventListener('touchcancel', onTouchEnd, { passive: true });
     return () => {
       el.removeEventListener('wheel', onWheel);
-      el.removeEventListener('touchstart', onTouchStart);
-      el.removeEventListener('touchmove', onTouchMove);
+      el.removeEventListener('scroll', onScroll);
       el.removeEventListener('touchend', onTouchEnd);
+      el.removeEventListener('touchcancel', onTouchEnd);
+      if (snapTimer) window.clearTimeout(snapTimer);
     };
   }, []);
 
