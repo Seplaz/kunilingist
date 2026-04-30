@@ -1,5 +1,6 @@
 .page {
-  block-size: 100svb;
+  height: 100vh;
+  height: 100dvh;
   background-image: url('../../../public/images/background_2.png');
   background-size: cover;
   background-position: center;

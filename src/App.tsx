@@ -67,14 +67,14 @@ export default function App() {
   }, []);
 
   return (
-    <div ref={containerRef} className='reels'>
+    <div ref={containerRef} className='screenScroller'>
       {pages.map((Page, i) => (
         <section
           key={i}
           ref={(node) => {
             sectionRefs.current[i] = node;
           }}
-          className='reel'
+          className='screen'
         >
           {Page}
         </section>

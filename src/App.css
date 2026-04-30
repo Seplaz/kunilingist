@@ -1,6 +1,7 @@
 html,
 body {
-  block-size: 100svb;
+  height: 100vh;
+  height: 100dvh;
 }
 
 body {
@@ -9,21 +10,25 @@ body {
 }
 
 #root {
-  block-size: 100svb;
+  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
-.reels {
-  block-size: 100svb;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
+.screenScroller {
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
 
-.reel {
-  block-size: 100svb;
+.screen {
+  height: 100vh;
+  height: 100dvh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
