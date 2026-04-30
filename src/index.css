@@ -10,7 +10,7 @@ body {
 
 #root {
   max-inline-size: 393px;
-  min-block-size: 100svb;
+  max-block-size: 100svb;
   padding: 0;
   margin: 0 auto;
   display: flex;

@@ -32,14 +32,14 @@ export default function App() {
     };
     const onWheel: EventListener = (event) => {
       const e = event as WheelEvent;
-      // трекпады могут давать очень мелкие значения — отсечём шум
+
       if (Math.abs(e.deltaY) < 8) return;
       e.preventDefault();
       if (locked) return;
       locked = true;
       const dir = e.deltaY > 0 ? 1 : -1;
       scrollToIndex(getActiveIndex() + dir);
-      // простая блокировка, чтобы не пролистывать 2-3 экрана за один жест
+
       window.setTimeout(() => (locked = false), 450);
     };
     let touchStartY = 0;
@@ -51,9 +51,9 @@ export default function App() {
       const e = event as TouchEvent;
       const endY = e.changedTouches[0]?.clientY ?? 0;
       const dy = endY - touchStartY;
-      // порог, чтобы случайные касания не листали
+
       if (Math.abs(dy) < 40) return;
-      const dir = dy < 0 ? 1 : -1; // свайп вверх -> следующая секция
+      const dir = dy < 0 ? 1 : -1;
       scrollToIndex(getActiveIndex() + dir);
     };
     el.addEventListener('wheel', onWheel, { passive: false });
