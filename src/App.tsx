@@ -7,6 +7,7 @@ import { ThirdPage } from './pages/ThirdPage/ThirdPage';
 export default function App() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const sectionRefs = useRef<Array<HTMLElement | null>>([]);
+  const touchStartYRef = useRef(0);
   const pages = useMemo(
     () => [<FirstPage />, <SecondPage />, <ThirdPage />],
     [],
@@ -20,10 +21,7 @@ export default function App() {
         0,
         Math.min(sectionRefs.current.length - 1, nextIndex),
       );
-      sectionRefs.current[clamped]?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+      el.scrollTo({ top: clamped * el.clientHeight, behavior: 'smooth' });
     };
     const getActiveIndex = () => {
       const top = el.scrollTop;
@@ -42,15 +40,19 @@ export default function App() {
 
       window.setTimeout(() => (locked = false), 450);
     };
-    let touchStartY = 0;
     const onTouchStart: EventListener = (event) => {
       const e = event as TouchEvent;
-      touchStartY = e.touches[0]?.clientY ?? 0;
+      touchStartYRef.current = e.touches[0]?.clientY ?? 0;
+    };
+    const onTouchMove: EventListener = (event) => {
+      // На iOS Safari без этого жест может “утащить” контент,
+      // оставляя реальный сдвиг (пустоту сверху/снизу).
+      event.preventDefault();
     };
     const onTouchEnd: EventListener = (event) => {
       const e = event as TouchEvent;
       const endY = e.changedTouches[0]?.clientY ?? 0;
-      const dy = endY - touchStartY;
+      const dy = endY - touchStartYRef.current;
 
       if (Math.abs(dy) < 40) return;
       const dir = dy < 0 ? 1 : -1;
@@ -58,10 +60,12 @@ export default function App() {
     };
     el.addEventListener('wheel', onWheel, { passive: false });
     el.addEventListener('touchstart', onTouchStart, { passive: true });
+    el.addEventListener('touchmove', onTouchMove, { passive: false });
     el.addEventListener('touchend', onTouchEnd, { passive: true });
     return () => {
       el.removeEventListener('wheel', onWheel);
       el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchmove', onTouchMove);
       el.removeEventListener('touchend', onTouchEnd);
     };
   }, []);

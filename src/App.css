@@ -2,6 +2,7 @@ html,
 body {
   height: 100vh;
   height: 100dvh;
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -24,6 +25,7 @@ body {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  touch-action: manipulation;
 }
 
 .screen {
