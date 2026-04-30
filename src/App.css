@@ -1,6 +1,6 @@
 html,
 body {
-  block-size: 100dvb;
+  block-size: 100svb;
 }
 
 body {
@@ -9,12 +9,12 @@ body {
 }
 
 #root {
-  block-size: 100dvb;
+  block-size: 100svb;
   overflow: hidden;
 }
 
 .reels {
-  block-size: 100dvb;
+  block-size: 100svb;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: y mandatory;
@@ -23,7 +23,7 @@ body {
 }
 
 .reel {
-  block-size: 100dvb;
+  block-size: 100svb;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
