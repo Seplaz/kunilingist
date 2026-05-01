@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.header__left {
+  background-color: #f2ece6;
+  inline-size: 100%;
+}
+
+.header__right {
+  background-color: #f2ece6;
+  inline-size: 100%;
+}

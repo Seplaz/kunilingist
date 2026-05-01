@@ -10,7 +10,7 @@ export const Footer = () => {
         <div className={styles.footer__icons}>
           <p className={styles.footer__text}>From</p>
           <img src={logo} alt="logo" />
-          <p className={styles.footer__text}>With</p>
+          <p className={styles.footer__text}>with</p>
           <img src={heart} alt="heart" />
         </div>
       </div>

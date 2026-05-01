@@ -1,7 +1,7 @@
 .footer {
-  background-color: #0b0c0f;
-  color: #f2ece6;
   padding: 30px 20px;
+  color: #f2ece6;
+  background-color: #0b0c0f;
 }
 
 .footer__container {
@@ -11,8 +11,8 @@
 }
 
 .footer__text {
-  font-size: 12px;
   font-weight: 700;
+  font-size: clamp(0.75rem, 0.6562rem + 0.382vw, 1rem);
 }
 
 .footer__icons {

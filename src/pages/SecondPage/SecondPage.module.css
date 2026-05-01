@@ -4,10 +4,10 @@
   justify-content: space-between;
   height: 100vh;
   height: 100dvh;
+  background-image: url('../../../public/images/background_2.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  background-image: url('../../../public/images/background_2.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }

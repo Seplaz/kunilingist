@@ -13,11 +13,11 @@ body {
 #root {
   height: 100vh;
   height: 100dvh;
-  overflow-y: auto;
   overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
   overscroll-behavior-y: contain;
   scroll-snap-type: y mandatory;
   scroll-snap-stop: always;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
 }
