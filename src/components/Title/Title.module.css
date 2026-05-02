@@ -15,6 +15,18 @@
   display: block;
 }
 
+/* Для ThirdPage: первая строка "СТАТИСТИКА", вторая "И СООБЩЕСТВО" */
+[data-page="third"][data-stacked='true'] .word:nth-child(1) {
+  display: block;
+}
+[data-page="third"][data-stacked='true'] .word:nth-child(2),
+[data-page="third"][data-stacked='true'] .word:nth-child(3) {
+  display: inline;
+}
+[data-page="third"][data-stacked='true'] .word:nth-child(2)::after {
+  content: ' ';
+}
+
 [data-active='true'] .word {
   animation: titleRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   animation-delay: calc(var(--base, 0ms) + var(--d, 0ms));

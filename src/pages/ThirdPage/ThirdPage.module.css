@@ -19,3 +19,12 @@
   gap: 16px;
   flex-grow: 1;
 }
+
+/* Для ThirdPage: первая строка "СТАТИСТИКА", вторая "И СООБЩЕСТВО" */
+[data-page="third"] .word:nth-child(1) {
+  display: block;
+}
+[data-page="third"] .word:nth-child(2),
+[data-page="third"] .word:nth-child(3) {
+  display: inline;
+}

@@ -19,7 +19,7 @@ export const ThirdPage = ({ active }: Props) => {
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <Header />
       <div className={styles.content}>
-        <Title title={title} stackedWords baseDelayMs={baseDelayMs} />
+        <Title title={title} stackedWords baseDelayMs={baseDelayMs} page="third" />
         <Subtitle subtitle="0 прослушиваний во всём мире" delayMs={subtitleDelayMs} />
         <Subtitle subtitle="666 положительных отзывов" delayMs={subtitle2DelayMs} />
         <Subtitle subtitle="420 довольных бомжих" delayMs={subtitle3DelayMs} />

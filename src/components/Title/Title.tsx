@@ -10,15 +10,17 @@ type Props = {
   title: string;
   stackedWords?: boolean;
   baseDelayMs?: number;
+  page?: string;
 };
 
-export const Title = ({ title, stackedWords = false, baseDelayMs = 200 }: Props) => {
+export const Title = ({ title, stackedWords = false, baseDelayMs = 200, page }: Props) => {
   const words = title.trim().split(/\s+/).filter(Boolean);
 
   return (
     <h1
       className={styles.title}
       data-stacked={stackedWords ? 'true' : 'false'}
+      data-page={page}
       aria-label={title}
       style={{ '--base': `${baseDelayMs}ms` } as CSSVars}
     >
