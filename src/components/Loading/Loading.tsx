@@ -4,10 +4,11 @@ import loading from '/icons/loading.svg';
 
 type Props = {
   minDurationMs?: number;
+  preloadImages?: string[];
   onFinished?: () => void;
 };
 
-export const Loading = ({ minDurationMs = 600, onFinished }: Props) => {
+export const Loading = ({ minDurationMs = 600, preloadImages = [], onFinished }: Props) => {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
@@ -19,14 +20,30 @@ export const Loading = ({ minDurationMs = 600, onFinished }: Props) => {
       window.setTimeout(() => setHidden(true), rest);
     };
 
+    const preload = () => {
+      if (preloadImages.length === 0) {
+        finish();
+        return;
+      }
+      let loaded = 0;
+      preloadImages.forEach((src) => {
+        const img = new Image();
+        img.onload = img.onerror = () => {
+          loaded += 1;
+          if (loaded === preloadImages.length) finish();
+        };
+        img.src = src;
+      });
+    };
+
     if (document.readyState === 'complete') {
-      finish();
+      preload();
       return;
     }
 
-    window.addEventListener('load', finish, { once: true });
-    return () => window.removeEventListener('load', finish);
-  }, [minDurationMs]);
+    window.addEventListener('load', preload, { once: true });
+    return () => window.removeEventListener('load', preload);
+  }, [minDurationMs, preloadImages]);
 
   return (
     <div

@@ -45,7 +45,7 @@ export default function App() {
 
   return (
     <>
-      {showLoading ? <Loading onFinished={() => { setShowLoading(false); setLoadingDone(true); }} /> : null}
+      {showLoading ? <Loading preloadImages={['/images/background.png']} onFinished={() => { setShowLoading(false); setLoadingDone(true); }} /> : null}
       <div className="scrollContainer" ref={containerRef}>
       <div className="section">
         <FirstPage active={activeIndex === 0 && loadingDone} />
