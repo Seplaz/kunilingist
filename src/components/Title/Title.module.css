@@ -6,14 +6,18 @@
 }
 
 .word {
-  display: block;
+  display: inline-block;
   opacity: 0;
   transform: translateY(14px);
 }
 
+[data-stacked='true'] .word {
+  display: block;
+}
+
 [data-active='true'] .word {
   animation: titleRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  animation-delay: var(--d, 0ms);
+  animation-delay: calc(var(--base, 0ms) + var(--d, 0ms));
 }
 
 @keyframes titleRise {

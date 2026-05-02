@@ -1,22 +1,34 @@
+import React from 'react';
 import styles from './Title.module.css';
 
 type CSSVars = React.CSSProperties & {
   ['--d']?: string;
+  ['--base']?: string;
 };
 
-export const Title = ({ title }: { title: string }) => {
+type Props = {
+  title: string;
+  stackedWords?: boolean;
+  baseDelayMs?: number;
+};
+
+export const Title = ({ title, stackedWords = false, baseDelayMs = 200 }: Props) => {
   const words = title.trim().split(/\s+/).filter(Boolean);
 
   return (
-    <h1 className={styles.title} aria-label={title}>
+    <h1
+      className={styles.title}
+      data-stacked={stackedWords ? 'true' : 'false'}
+      aria-label={title}
+      style={{ '--base': `${baseDelayMs}ms` } as CSSVars}
+    >
       {words.map((w, i) => (
-        <span
-          key={`${w}-${i}`}
-          className={styles.word}
-          style={{ '--d': `${i * 250}ms` } as CSSVars}
-        >
-          {w}
-        </span>
+        <React.Fragment key={`${w}-${i}`}>
+          <span className={styles.word} style={{ '--d': `${i * 250}ms` } as CSSVars}>
+            {w}
+          </span>
+          {!stackedWords && i < words.length - 1 ? ' ' : null}
+        </React.Fragment>
       ))}
     </h1>
   );
