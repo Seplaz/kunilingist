@@ -19,9 +19,9 @@ export const SecondPage = ({ active }: Props) => {
       <Header />
       <div className={styles.content}>
         <Title title={title} baseDelayMs={baseDelayMs} />
-        <Subtitle subtitle="2026 — БДСМ" delayMs={subtitleDelayMs} />
+        <Subtitle subtitle="2026 — Официальный гимн чата" delayMs={subtitleDelayMs} />
         <Subtitle
-          subtitle="Вдохновлено бичихой с центрального рынка, которая отказала в предложении с ней встречаться..."
+          subtitle="Саундтрек к нашей общей деградации"
           delayMs={subtitle2DelayMs}
         />
       </div>

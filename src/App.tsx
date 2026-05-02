@@ -54,7 +54,7 @@ export default function App() {
         <SecondPage active={activeIndex === 1} />
       </div>
       <div className="section">
-        <ThirdPage />
+        <ThirdPage active={activeIndex === 2} />
       </div>
 
       <Scroll count={pagesCount} activeIndex={activeIndex} onSelect={scrollToIndex} />
