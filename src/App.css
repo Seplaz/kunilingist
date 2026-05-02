@@ -13,11 +13,28 @@ body {
 #root {
   height: 100vh;
   height: 100dvh;
+}
+
+.scrollContainer {
+  height: 100vh;
+  height: 100dvh;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   overscroll-behavior-y: contain;
   scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.section {
+  scroll-snap-align: start;
   scroll-snap-stop: always;
 }

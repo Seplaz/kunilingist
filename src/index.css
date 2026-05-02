@@ -14,11 +14,8 @@ body {
 #root {
   margin: 0 auto;
   padding: 0;
-  /* max-inline-size: 393px; */
+  max-inline-size: 393px;
   block-size: 100vh;
   block-size: 100dvh;
 }
 
-::-webkit-scrollbar {
-  width: 0;
-}
