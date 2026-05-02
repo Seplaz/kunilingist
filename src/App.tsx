@@ -10,6 +10,7 @@ export default function App() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [showLoading, setShowLoading] = useState(true);
+  const [loadingDone, setLoadingDone] = useState(false);
 
   const pagesCount = 3;
 
@@ -44,10 +45,10 @@ export default function App() {
 
   return (
     <>
-      {showLoading ? <Loading onFinished={() => setShowLoading(false)} /> : null}
+      {showLoading ? <Loading onFinished={() => { setShowLoading(false); setLoadingDone(true); }} /> : null}
       <div className="scrollContainer" ref={containerRef}>
       <div className="section">
-        <FirstPage active={activeIndex === 0} />
+        <FirstPage active={activeIndex === 0 && loadingDone} />
       </div>
       <div className="section">
         <SecondPage active={activeIndex === 1} />
