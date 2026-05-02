@@ -49,7 +49,7 @@ export const Loading = ({ minDurationMs = 600, preloadImages = [], onFinished }:
     <div
       className={styles.overlay}
       data-hidden={hidden ? 'true' : 'false'}
-      onTransitionEnd={() => {
+      onAnimationEnd={() => {
         if (hidden) onFinished?.();
       }}
       aria-hidden="true"
