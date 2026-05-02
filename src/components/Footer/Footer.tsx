@@ -1,5 +1,5 @@
-import logo from '../../../public/icons/logo.svg';
-import heart from '../../../public/icons/heart.svg';
+import logo from '/icons/logo.svg';
+import heart from '/icons/heart.svg';
 import styles from './Footer.module.css';
 
 export const Footer = () => {
