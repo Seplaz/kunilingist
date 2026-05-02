@@ -3,11 +3,13 @@ import { FirstPage } from './pages/FirstPage/FirstPage';
 import { SecondPage } from './pages/SecondPage/SecondPage';
 import { ThirdPage } from './pages/ThirdPage/ThirdPage';
 import { Scroll } from './components/Scroll/Scroll';
+import { Loading } from './components/Loading/Loading';
 import { useEffect, useRef, useState } from 'react';
 
 export default function App() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [showLoading, setShowLoading] = useState(true);
 
   const pagesCount = 3;
 
@@ -41,7 +43,9 @@ export default function App() {
   };
 
   return (
-    <div className="scrollContainer" ref={containerRef}>
+    <>
+      {showLoading ? <Loading onFinished={() => setShowLoading(false)} /> : null}
+      <div className="scrollContainer" ref={containerRef}>
       <div className="section">
         <FirstPage active={activeIndex === 0} />
       </div>
@@ -53,6 +57,7 @@ export default function App() {
       </div>
 
       <Scroll count={pagesCount} activeIndex={activeIndex} onSelect={scrollToIndex} />
-    </div>
+      </div>
+    </>
   );
 }
