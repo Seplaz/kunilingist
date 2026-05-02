@@ -2,7 +2,7 @@ import styles from './SecondPage.module.css';
 import { Header } from '../../components/Header/Header';
 import { Title } from '../../components/Title/Title';
 import { Subtitle } from '../../components/Subtitle/Subtitle';
-import arrowDown from '../../../public/icons/arrowDown.svg'
+import arrowDown from '/icons/arrowDown.svg'
 
 type Props = { active: boolean };
 
