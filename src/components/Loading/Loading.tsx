@@ -49,12 +49,17 @@ export const Loading = ({ minDurationMs = 600, preloadImages = [], onFinished }:
     <div
       className={styles.overlay}
       data-hidden={hidden ? 'true' : 'false'}
-      onAnimationEnd={() => {
-        if (hidden) onFinished?.();
-      }}
       aria-hidden="true"
     >
-      <img src={loading} alt="Загрузка..." />
+      <div className={styles.bg} />
+      <img
+        src={loading}
+        alt="Загрузка..."
+        className={styles.icon}
+        onAnimationEnd={() => {
+          if (hidden) onFinished?.();
+        }}
+      />
     </div>
   );
 };
