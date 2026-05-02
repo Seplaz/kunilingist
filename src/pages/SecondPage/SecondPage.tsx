@@ -2,6 +2,7 @@ import styles from './SecondPage.module.css';
 import { Header } from '../../components/Header/Header';
 import { Title } from '../../components/Title/Title';
 import { Subtitle } from '../../components/Subtitle/Subtitle';
+import arrowDown from '../../../public/icons/arrowDown.svg'
 
 type Props = { active: boolean };
 
@@ -17,13 +18,14 @@ export const SecondPage = ({ active }: Props) => {
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <Header />
       <div className={styles.content}>
-      <Title title={title} baseDelayMs={baseDelayMs} />
-      <Subtitle subtitle="2026 — БДСМ" delayMs={subtitleDelayMs} />
-      <Subtitle
-        subtitle="Вдохновлено бичихой с центрального рынка, которая отказала в предложении с ней встречаться..."
-        delayMs={subtitle2DelayMs}
-      />
+        <Title title={title} baseDelayMs={baseDelayMs} />
+        <Subtitle subtitle="2026 — БДСМ" delayMs={subtitleDelayMs} />
+        <Subtitle
+          subtitle="Вдохновлено бичихой с центрального рынка, которая отказала в предложении с ней встречаться..."
+          delayMs={subtitle2DelayMs}
+        />
       </div>
+      <img className={styles.arrow} src={arrowDown} alt="Вниз" style={{ '--arrow-delay': '1200ms' } as React.CSSProperties} />
     </div>
   );
 };
