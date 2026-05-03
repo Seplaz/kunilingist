@@ -1,13 +1,14 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 /* Обложка */
 .card {
-  border-radius: 32px;
+  border-radius: 16px;
   overflow: hidden;
-  inline-size: 321px;
+  inline-size: 196px;
   aspect-ratio: 1;
 }
 
@@ -26,8 +27,8 @@
   -webkit-backdrop-filter: blur(16px);
   border-radius: 16px;
   padding: 16px 32px;
-  inline-size: 321px;
   margin-block-start: 16px;
+  inline-size: 100%;
 }
 
 .info {
@@ -94,7 +95,7 @@
   cursor: pointer;
   position: relative;
   touch-action: none;
-  inline-size: 321px;
+  inline-size: 100%;
   margin-block-start: 8px;
 }
 
@@ -112,6 +113,6 @@
   justify-content: space-between;
   font-size: 12px;
   color: rgba(242, 236, 230, 0.8);
-  inline-size: 321px;
+  inline-size: 100%;
   margin-block-start: 4px;
 }

@@ -17,7 +17,7 @@ export const FirstPage = ({ active }: Props) => {
       <Header />
       <div className={styles.content}>
       <Title title={title} stackedWords baseDelayMs={baseDelayMs} />
-      <Subtitle subtitle="Искусство, от которого сводит колени" delayMs={subtitleDelayMs} />
+      <Subtitle subtitle="Искусство, от которого сводит ноги" delayMs={subtitleDelayMs} />
       </div>
       <img className={styles.arrow} src={arrowDown} alt="Вниз" style={{ '--arrow-delay': '1450ms' } as React.CSSProperties} />
     </div>
