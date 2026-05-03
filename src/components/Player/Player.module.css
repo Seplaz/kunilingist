@@ -9,8 +9,15 @@
 .card {
   border-radius: 16px;
   overflow: hidden;
-  max-inline-size: 196px;
+  inline-size: calc(100% - 72px);
   aspect-ratio: 1;
+  align-self: center;
+}
+
+@media (max-height: 800px) {
+  .card {
+    inline-size: 164px;
+  }
 }
 
 .cover {
