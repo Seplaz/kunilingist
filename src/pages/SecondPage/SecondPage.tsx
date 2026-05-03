@@ -2,7 +2,8 @@ import styles from './SecondPage.module.css';
 import { Header } from '../../components/Header/Header';
 import { Title } from '../../components/Title/Title';
 import { Subtitle } from '../../components/Subtitle/Subtitle';
-import arrowDown from '/icons/arrowDown.svg'
+import { Player } from '../../components/Player/Player';
+import arrowDown from '/icons/arrowDown.svg';
 
 type Props = { active: boolean };
 
@@ -24,6 +25,7 @@ export const SecondPage = ({ active }: Props) => {
           subtitle="Саундтрек деградационного сообщества"
           delayMs={subtitle2DelayMs}
         />
+        <Player />
       </div>
       <img className={styles.arrow} src={arrowDown} alt="Вниз" style={{ '--arrow-delay': '1200ms' } as React.CSSProperties} />
     </div>
