@@ -1,7 +1,6 @@
 .btn {
   display: block;
   inline-size: 100%;
-  margin-block-start: 16px;
   padding: 16px 32px;
   border-radius: 16px;
   background: rgba(242, 236, 230, 0.8);
