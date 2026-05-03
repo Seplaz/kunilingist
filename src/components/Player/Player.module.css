@@ -1,7 +1,6 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 /* Обложка */
@@ -15,7 +14,6 @@
 .cover {
   inline-size: 100%;
   object-fit: cover;
-  /* display: block; */
 }
 
 /* Плашка с названием и кнопкой */
@@ -28,7 +26,8 @@
   -webkit-backdrop-filter: blur(16px);
   border-radius: 16px;
   padding: 16px 32px;
-  width: 321px;
+  inline-size: 321px;
+  margin-block-start: 16px;
 }
 
 .info {
@@ -96,6 +95,7 @@
   position: relative;
   touch-action: none;
   inline-size: 321px;
+  margin-block-start: 8px;
 }
 
 .progressFill {
@@ -103,7 +103,7 @@
   background: #f2ece6;
   border-radius: 999px;
   pointer-events: none;
-  transition: inline-size 100ms linear;
+  transition: width 100ms linear;
 }
 
 /* Время */
@@ -113,4 +113,5 @@
   font-size: 12px;
   color: rgba(242, 236, 230, 0.8);
   inline-size: 321px;
+  margin-block-start: 4px;
 }

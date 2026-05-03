@@ -19,13 +19,17 @@ export const SecondPage = ({ active }: Props) => {
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <Header />
       <div className={styles.content}>
-        <Title title={title} baseDelayMs={baseDelayMs} />
-        <Subtitle subtitle="2026 — Труповозка" delayMs={subtitleDelayMs} />
-        <Subtitle
-          subtitle="Саундтрек деградационного сообщества"
-          delayMs={subtitle2DelayMs}
-        />
-        <Player />
+        <div className={styles.text}>
+          <Title title={title} baseDelayMs={baseDelayMs} />
+          <Subtitle subtitle="2026 — Труповозка" delayMs={subtitleDelayMs} />
+          <Subtitle
+            subtitle="Саундтрек деградационного сообщества"
+            delayMs={subtitle2DelayMs}
+          />
+        </div>
+        <div className={styles.playerArea}>
+          <Player />
+        </div>
       </div>
       <img className={styles.arrow} src={arrowDown} alt="Вниз" style={{ '--arrow-delay': '1200ms' } as React.CSSProperties} />
     </div>

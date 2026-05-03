@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
-  height: 100vh;
-  height: 100dvh;
+  block-size: 100vh;
+  block-size: 100dvh;
   background-image: url('/images/background_2.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -17,8 +17,18 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding: 48px 20px;
+  padding: 48px 20px 0;
+  gap: 32px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
   gap: 16px;
+}
+
+.playerArea {
+  align-self: start;
 }
 
 .arrow {

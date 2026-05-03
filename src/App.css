@@ -1,7 +1,7 @@
 html,
 body {
-  height: 100vh;
-  height: 100dvh;
+  block-size: 100vh;
+  block-size: 100dvh;
   overscroll-behavior-y: none;
 }
 
@@ -11,13 +11,13 @@ body {
 }
 
 #root {
-  height: 100vh;
-  height: 100dvh;
+  block-size: 100vh;
+  block-size: 100dvh;
 }
 
 .scrollContainer {
-  height: 100vh;
-  height: 100dvh;
+  block-size: 100vh;
+  block-size: 100dvh;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -30,8 +30,8 @@ body {
 }
 
 .scrollContainer::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  inline-size: 0;
+  block-size: 0;
 }
 
 .section {
