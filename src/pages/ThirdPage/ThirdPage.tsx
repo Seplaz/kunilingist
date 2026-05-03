@@ -11,7 +11,7 @@ export const ThirdPage = ({ active }: Props) => {
   const title = 'МЕРЧ И СООБЩЕСТВО';
   const wordsCount = title.trim().split(/\s+/).filter(Boolean).length;
   const subtitleDelayMs = baseDelayMs + (wordsCount - 1) * 250 + 250;
-  const subtitleStaggerMs = 250;
+  // const subtitleStaggerMs = 250;
 
   return (
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
