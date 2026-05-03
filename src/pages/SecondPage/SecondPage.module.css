@@ -17,9 +17,10 @@
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 48px 20px 0;
   gap: 32px;
+  flex: 1;
+  min-block-size: 0;
 }
 
 .text {
@@ -30,7 +31,8 @@
 
 .playerArea {
   display: flex;
-  /* inline-size: 321px; */
+  margin-block-start: auto;
+  padding-block-end: 96px;
 }
 
 .arrow {

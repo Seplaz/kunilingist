@@ -15,9 +15,22 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding: 48px 20px;
+  padding: 48px 20px 24px;
   gap: 16px;
   flex-grow: 1;
+}
+
+.merch {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: stretch;
+}
+
+@media (max-width: 425px) {
+  .merch {
+    inline-size: 321px;
+  }
 }
 
 [data-page="third"] .word:nth-child(1) {

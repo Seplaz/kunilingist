@@ -1,0 +1,20 @@
+.btn {
+  display: block;
+  inline-size: 100%;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(242, 236, 230, 0.9);
+  color: #0b0c0f;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: opacity 200ms ease;
+}
+
+.btn:active {
+  opacity: 0.75;
+}

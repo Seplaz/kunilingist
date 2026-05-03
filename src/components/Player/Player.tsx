@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './Player.module.css';
-import cover from '/images/cover.png';
 import playIcon from '/icons/play.svg';
 import pauseIcon from '/icons/pause.svg';
 import audio from '/audio/КУНИЛИНГИСТ — Труповозка.mp3';
@@ -8,12 +7,10 @@ import audio from '/audio/КУНИЛИНГИСТ — Труповозка.mp3';
 const AUDIO_SRC = audio;
 
 type CSSVars = React.CSSProperties & {
-  ['--cover-delay']?: string;
   ['--bar-delay']?: string;
 };
 
 type Props = {
-  coverDelayMs?: number;
   barDelayMs?: number;
   active?: boolean;
 };
@@ -24,7 +21,7 @@ function formatTime(s: number): string {
   return `${m}:${sec.toString().padStart(2, '0')}`;
 }
 
-export const Player = ({ coverDelayMs = 0, barDelayMs = 0, active = false }: Props) => {
+export const Player = ({ barDelayMs = 0, active = false }: Props) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -75,16 +72,9 @@ export const Player = ({ coverDelayMs = 0, barDelayMs = 0, active = false }: Pro
     <div
       className={styles.wrapper}
       data-active={active ? 'true' : 'false'}
-      style={{
-        '--cover-delay': `${coverDelayMs}ms`,
-        '--bar-delay': `${barDelayMs}ms`,
-      } as CSSVars}
+      style={{ '--bar-delay': `${barDelayMs}ms` } as CSSVars}
     >
       <audio ref={audioRef} src={AUDIO_SRC} preload="metadata" />
-
-      <div className={styles.card}>
-        <img src={cover} alt="Обложка" className={styles.cover} />
-      </div>
 
       <div className={styles.bar}>
         <div className={styles.info}>
