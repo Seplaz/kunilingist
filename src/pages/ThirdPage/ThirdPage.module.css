@@ -15,7 +15,6 @@
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 48px 20px 48px;
   gap: 16px;
   flex-grow: 1;
@@ -26,6 +25,7 @@
   flex-direction: row;
   gap: 16px;
   align-items: stretch;
+  padding-block-start: 16px;
 }
 
 @media (max-width: 425px) {
