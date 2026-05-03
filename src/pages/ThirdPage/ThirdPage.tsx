@@ -8,21 +8,17 @@ type Props = { active: boolean };
 
 export const ThirdPage = ({ active }: Props) => {
   const baseDelayMs = 200;
-  const title = 'СТАТИСТИКА И СООБЩЕСТВО';
+  const title = 'МЕРЧ И СООБЩЕСТВО';
   const wordsCount = title.trim().split(/\s+/).filter(Boolean).length;
   const subtitleDelayMs = baseDelayMs + (wordsCount - 1) * 250 + 250;
   const subtitleStaggerMs = 250;
-  const subtitle2DelayMs = subtitleDelayMs + subtitleStaggerMs;
-  const subtitle3DelayMs = subtitle2DelayMs + subtitleStaggerMs;
 
   return (
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <Header />
       <div className={styles.content}>
         <Title title={title} stackedWords baseDelayMs={baseDelayMs} page="third" />
-        <Subtitle subtitle="0 прослушиваний во всём мире" delayMs={subtitleDelayMs} />
-        <Subtitle subtitle="666 положительных отзывов" delayMs={subtitle2DelayMs} />
-        <Subtitle subtitle="420 довольных бомжих" delayMs={subtitle3DelayMs} />
+        <Subtitle subtitle="Присоединяйся к нашей деградации" delayMs={subtitleDelayMs} />
       </div>
       <Footer />
     </div>
