@@ -15,7 +15,8 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding: 48px 20px 24px;
+  justify-content: space-between;
+  padding: 48px 20px 48px;
   gap: 16px;
   flex-grow: 1;
 }
@@ -23,13 +24,13 @@
 .merch {
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 16px;
   align-items: stretch;
 }
 
 @media (max-width: 425px) {
   .merch {
-    inline-size: 321px;
+    inline-size: calc(100vw - 72px);
   }
 }
 

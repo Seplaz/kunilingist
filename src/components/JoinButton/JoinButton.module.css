@@ -1,20 +1,44 @@
 .btn {
   display: block;
   inline-size: 100%;
-  padding: 18px;
+  padding: 16px 32px;
   border-radius: 16px;
-  background: rgba(242, 236, 230, 0.9);
+  background: rgba(242, 236, 230, 0.8);
   color: #0b0c0f;
   font-size: 16px;
   font-weight: 700;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
   text-align: center;
   text-decoration: none;
   box-sizing: border-box;
-  transition: opacity 200ms ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 200ms ease, scale 200ms ease;
 }
 
 .btn:active {
   opacity: 0.75;
+  scale: 0.95;
+}
+
+[data-active='true'] .btn {
+  animation: btnRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes btnRise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
 }
