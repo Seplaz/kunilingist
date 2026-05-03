@@ -17,6 +17,7 @@
 .content {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 48px 20px 0;
   gap: 32px;
 }
@@ -28,6 +29,8 @@
 }
 
 .playerArea {
+  display: flex;
+  /* inline-size: 321px; */
 }
 
 .arrow {
