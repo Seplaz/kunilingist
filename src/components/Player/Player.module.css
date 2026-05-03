@@ -12,12 +12,19 @@
   inline-size: calc(100% - 72px);
   aspect-ratio: 1;
   align-self: center;
+  opacity: 0;
+  transform: translateY(14px);
 }
 
 @media (max-height: 800px) {
   .card {
     inline-size: 164px;
   }
+}
+
+[data-active='true'] .card {
+  animation: playerRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--cover-delay, 0ms);
 }
 
 .cover {
@@ -37,6 +44,38 @@
   padding: 16px 32px;
   margin-block-start: 16px;
   inline-size: 100%;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+[data-active='true'] .bar {
+  animation: playerRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--bar-delay, 0ms);
+}
+
+.progressTrack {
+  block-size: 3px;
+  background: rgba(242, 236, 230, 0.8);
+  border-radius: 999px;
+  cursor: pointer;
+  position: relative;
+  touch-action: none;
+  inline-size: 100%;
+  margin-block-start: 8px;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+[data-active='true'] .progressTrack {
+  animation: playerRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--bar-delay, 0ms);
+}
+
+@keyframes playerRise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .info {
@@ -76,7 +115,7 @@
   position: relative;
 }
 
-/* Анимация смены иконок */
+/* Анимация смены иконок play/pause */
 .playBtn .icon {
   position: absolute;
   inline-size: 16px;
@@ -95,18 +134,6 @@
   transform: scale(1);
 }
 
-/* Прогресс-бар */
-.progressTrack {
-  block-size: 3px;
-  background: rgba(242, 236, 230, 0.8);
-  border-radius: 999px;
-  cursor: pointer;
-  position: relative;
-  touch-action: none;
-  inline-size: 100%;
-  margin-block-start: 8px;
-}
-
 .progressFill {
   block-size: 100%;
   background: #f2ece6;
@@ -123,4 +150,22 @@
   color: rgba(242, 236, 230, 0.8);
   inline-size: 100%;
   margin-block-start: 4px;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+[data-active='true'] .times {
+  animation: playerRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--bar-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .bar,
+  .progressTrack,
+  .times {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
 }

@@ -14,6 +14,9 @@ export const SecondPage = ({ active }: Props) => {
   const subtitleDelayMs = baseDelayMs + (wordsCount - 1) * 250 + 250;
   const subtitleStaggerMs = 250;
   const subtitle2DelayMs = subtitleDelayMs + subtitleStaggerMs;
+  const coverDelayMs = subtitle2DelayMs + 500 + 250;   // после subtitle2 + её анимация + пауза
+  const barDelayMs = coverDelayMs + 500 + 150;          // после cover + её анимация + пауза
+  const arrowDelayMs = barDelayMs + 500 + 150;          // после bar + её анимация + пауза
 
   return (
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
@@ -28,10 +31,10 @@ export const SecondPage = ({ active }: Props) => {
           />
         </div>
         <div className={styles.playerArea}>
-          <Player />
+          <Player coverDelayMs={coverDelayMs} barDelayMs={barDelayMs} active={active} />
         </div>
       </div>
-      <img className={styles.arrow} src={arrowDown} alt="Вниз" style={{ '--arrow-delay': '1200ms' } as React.CSSProperties} />
+      <img className={styles.arrow} src={arrowDown} alt="Вниз" style={{ '--arrow-delay': `${arrowDelayMs}ms` } as React.CSSProperties} />
     </div>
   );
 };

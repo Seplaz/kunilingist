@@ -7,13 +7,24 @@ import audio from '/audio/КУНИЛИНГИСТ — Труповозка.mp3';
 
 const AUDIO_SRC = audio;
 
+type CSSVars = React.CSSProperties & {
+  ['--cover-delay']?: string;
+  ['--bar-delay']?: string;
+};
+
+type Props = {
+  coverDelayMs?: number;
+  barDelayMs?: number;
+  active?: boolean;
+};
+
 function formatTime(s: number): string {
   const m = Math.floor(s / 60);
   const sec = Math.floor(s % 60);
   return `${m}:${sec.toString().padStart(2, '0')}`;
 }
 
-export const Player = () => {
+export const Player = ({ coverDelayMs = 0, barDelayMs = 0, active = false }: Props) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -61,7 +72,14 @@ export const Player = () => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={styles.wrapper}
+      data-active={active ? 'true' : 'false'}
+      style={{
+        '--cover-delay': `${coverDelayMs}ms`,
+        '--bar-delay': `${barDelayMs}ms`,
+      } as CSSVars}
+    >
       <audio ref={audioRef} src={AUDIO_SRC} preload="metadata" />
 
       <div className={styles.card}>
