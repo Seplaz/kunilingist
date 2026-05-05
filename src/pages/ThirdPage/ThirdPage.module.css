@@ -4,20 +4,33 @@
   justify-content: space-between;
   block-size: 100vh;
   block-size: 100dvh;
-  background-image: url('/images/background_3.png');
+  background-image: url('/images/pages/page_3/background_3.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .page {
+    background-image: url('/images/pages/page_3/background_3_tablet.png');
+  }
+}
+
+@media (min-width: 1024px) {
+  .page {
+    background-image: url('/images/pages/page_3/background_3_desktop.png');
+  }
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  padding: 48px 20px 48px;
+  block-size: 100%;
+  padding: 48px 52px 48px 20px;
   gap: 16px;
-  flex-grow: 1;
 }
 
 .merch {
@@ -28,16 +41,10 @@
   padding-block-start: 16px;
 }
 
-@media (max-width: 425px) {
-  .merch {
-    inline-size: calc(100vw - 72px);
-  }
-}
-
-[data-page="third"] .word:nth-child(1) {
+[data-page='third'] .word:nth-child(1) {
   display: block;
 }
-[data-page="third"] .word:nth-child(2),
-[data-page="third"] .word:nth-child(3) {
+[data-page='third'] .word:nth-child(2),
+[data-page='third'] .word:nth-child(3) {
   display: inline;
 }

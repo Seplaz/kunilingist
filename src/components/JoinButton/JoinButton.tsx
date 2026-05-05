@@ -11,14 +11,22 @@ type Props = {
   active?: boolean;
 };
 
-export const JoinButton = ({ href, label = 'Присоединиться', delayMs = 0, active = false }: Props) => {
+export const JoinButton = ({
+  href,
+  label = 'Присоединиться',
+  delayMs = 0,
+  active = false,
+}: Props) => {
   return (
-    <div data-active={active ? 'true' : 'false'} style={{ '--d': `${delayMs}ms` } as CSSVars}>
+    <div
+      data-active={active ? 'true' : 'false'}
+      style={{ '--d': `${delayMs}ms` } as CSSVars}
+    >
       <a
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.btn}
+        target='_blank'
+        rel='noopener noreferrer'
+        className={styles.button}
       >
         {label}
       </a>

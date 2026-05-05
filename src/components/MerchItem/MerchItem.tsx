@@ -19,7 +19,7 @@ export const MerchItem = ({ image, alt, delayMs = 0, active = false }: Props) =>
       style={{ '--d': `${delayMs}ms` } as CSSVars}
     >
       <img src={image} alt={alt} className={styles.image} />
-      <button className={styles.btn} disabled aria-disabled="true">
+      <button className={styles.button} disabled aria-disabled="true">
         Недоступно
       </button>
     </div>

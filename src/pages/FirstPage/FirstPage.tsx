@@ -2,7 +2,7 @@ import styles from './FirstPage.module.css';
 import { Header } from '../../components/Header/Header';
 import { Title } from '../../components/Title/Title';
 import { Subtitle } from '../../components/Subtitle/Subtitle';
-import arrowDown from '/icons/arrowDown.svg'
+import arrowDown from '/icons/arrow_down.svg';
 
 type Props = { active: boolean };
 
@@ -16,10 +16,18 @@ export const FirstPage = ({ active }: Props) => {
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <Header />
       <div className={styles.content}>
-      <Title title={title} stackedWords baseDelayMs={baseDelayMs} />
-      <Subtitle subtitle="Искусство, от которого сводит ноги" delayMs={subtitleDelayMs} />
+        <Title title={title} stackedWords baseDelayMs={baseDelayMs} />
+        <Subtitle
+          subtitle='Искусство, от которого сводит ноги'
+          delayMs={subtitleDelayMs}
+        />
+        <img
+        className={styles.arrow}
+        src={arrowDown}
+        alt='Вниз'
+        style={{ '--arrow-delay': '1450ms' } as React.CSSProperties}
+        />
       </div>
-      <img className={styles.arrow} src={arrowDown} alt="Вниз" style={{ '--arrow-delay': '1450ms' } as React.CSSProperties} />
     </div>
   );
 };

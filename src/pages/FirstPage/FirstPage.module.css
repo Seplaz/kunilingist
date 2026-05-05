@@ -2,22 +2,34 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
-  height: 100vh;
-  height: 100dvh;
-  background-image: url('/images/background.png');
+  block-size: 100vh;
+  block-size: 100dvh;
+  background-image: url('/images/pages/page_1/background.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  padding-block-end: 48px;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .page {
+    background-image: url('/images/pages/page_1/background_tablet.png');
+  }
+}
+
+@media (min-width: 1024px) {
+  .page {
+    background-image: url('/images/pages/page_1/background_desktop.png');
+  }
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  padding: 48px 20px 0 20px;
+  block-size: 100%;
+  padding: 48px 52px 48px 20px;
   gap: 16px;
 }
 
@@ -27,7 +39,6 @@
   position: absolute;
   inset-block-end: 48px;
   inset-inline-start: 50%;
-  transform: translateX(-50%);
   opacity: 0;
   transform: translateX(-50%) translateY(-14px);
 }

@@ -4,23 +4,33 @@
   justify-content: start;
   block-size: 100vh;
   block-size: 100dvh;
-  background-image: url('/images/background_2.png');
+  background-image: url('/images/pages/page_2/background_2.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  padding-block-end: 48px;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .page {
+    background-image: url('/images/pages/page_2/background_2_tablet.png');
+  }
+}
+
+@media (min-width: 1024px) {
+  .page {
+    background-image: url('/images/pages/page_2/background_2_desktop.png');
+  }
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  padding: 48px 20px 0;
-  gap: 32px;
-  flex: 1;
-  min-block-size: 0;
+  block-size: 100%;
+  padding: 48px 52px 48px 20px;
+  gap: 16px;
 }
 
 .text {
@@ -29,19 +39,12 @@
   gap: 16px;
 }
 
-.playerArea {
-  display: flex;
-  margin-block-start: auto;
-  padding-block-end: 96px;
-}
-
 .arrow {
   inline-size: 32px;
   block-size: 37px;
   position: absolute;
   inset-block-end: 48px;
   inset-inline-start: 50%;
-  transform: translateX(-50%);
   opacity: 0;
   transform: translateX(-50%) translateY(-14px);
 }
@@ -53,7 +56,7 @@
 
 @keyframes arrowRise {
   to {
-        opacity: 0.8;
+    opacity: 0.8;
     transform: translateX(-50%) translateY(0);
   }
 }

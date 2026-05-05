@@ -8,6 +8,12 @@
   inline-size: 100%;
 }
 
+@media (min-width: 768px) {
+  .header__left {
+    inline-size: 0%;
+  }
+}
+
 .header__right {
   background-color: #f2ece6;
   inline-size: 100%;

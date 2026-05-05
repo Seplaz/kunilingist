@@ -1,17 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './Player.module.css';
-import playIcon from '/icons/play.svg';
-import pauseIcon from '/icons/pause.svg';
+import play from '/icons/play.svg';
+import pause from '/icons/pause.svg';
 import audio from '/audio/КУНИЛИНГИСТ — Труповозка.mp3';
+import cover from '/images/cover.png';
 
 const AUDIO_SRC = audio;
 
 type CSSVars = React.CSSProperties & {
   ['--bar-delay']?: string;
+  ['--cover-delay']?: string;
 };
 
 type Props = {
   barDelayMs?: number;
+  coverDelayMs?: number;
   active?: boolean;
 };
 
@@ -21,7 +24,11 @@ function formatTime(s: number): string {
   return `${m}:${sec.toString().padStart(2, '0')}`;
 }
 
-export const Player = ({ barDelayMs = 0, active = false }: Props) => {
+export const Player = ({
+  barDelayMs = 0,
+  coverDelayMs = 1500,
+  active = false,
+}: Props) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -57,14 +64,17 @@ export const Player = ({ barDelayMs = 0, active = false }: Props) => {
     } else {
       audio.play();
     }
-    setPlaying(p => !p);
+    setPlaying((p) => !p);
   };
 
   const seek = (e: React.PointerEvent<HTMLDivElement>) => {
     const audio = audioRef.current;
     if (!audio || !audio.duration) return;
     const rect = e.currentTarget.getBoundingClientRect();
-    const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    const ratio = Math.max(
+      0,
+      Math.min(1, (e.clientX - rect.left) / rect.width),
+    );
     audio.currentTime = ratio * audio.duration;
   };
 
@@ -72,9 +82,16 @@ export const Player = ({ barDelayMs = 0, active = false }: Props) => {
     <div
       className={styles.wrapper}
       data-active={active ? 'true' : 'false'}
-      style={{ '--bar-delay': `${barDelayMs}ms` } as CSSVars}
+      style={
+        {
+          '--bar-delay': `${barDelayMs}ms`,
+          '--cover-delay': `${coverDelayMs}ms`,
+        } as CSSVars
+      }
     >
-      <audio ref={audioRef} src={AUDIO_SRC} preload="metadata" />
+      <audio ref={audioRef} src={AUDIO_SRC} preload='metadata' />
+
+      <img src={cover} alt='Обложка' className={styles.cover} />
 
       <div className={styles.bar}>
         <div className={styles.info}>
@@ -88,13 +105,13 @@ export const Player = ({ barDelayMs = 0, active = false }: Props) => {
           aria-label={playing ? 'Пауза' : 'Воспроизвести'}
         >
           <img
-            src={playIcon}
-            alt="Играть"
+            src={play}
+            alt='Воспроизвести'
             className={`${styles.icon} ${playing ? styles.iconHidden : styles.iconVisible}`}
           />
           <img
-            src={pauseIcon}
-            alt="Пауза"
+            src={pause}
+            alt='Пауза'
             className={`${styles.icon} ${playing ? styles.iconVisible : styles.iconHidden}`}
           />
         </button>
@@ -103,13 +120,16 @@ export const Player = ({ barDelayMs = 0, active = false }: Props) => {
       <div
         className={styles.progressTrack}
         onPointerDown={seek}
-        role="slider"
-        aria-label="Прогресс"
+        role='slider'
+        aria-label='Прогресс'
         aria-valuenow={Math.round(currentTime)}
         aria-valuemin={0}
         aria-valuemax={Math.round(duration)}
       >
-        <div className={styles.progressFill} style={{ width: `${progress * 100}%` }} />
+        <div
+          className={styles.progressFill}
+          style={{ width: `${progress * 100}%` }}
+        />
       </div>
 
       <div className={styles.times}>

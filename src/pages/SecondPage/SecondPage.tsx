@@ -3,7 +3,7 @@ import { Header } from '../../components/Header/Header';
 import { Title } from '../../components/Title/Title';
 import { Subtitle } from '../../components/Subtitle/Subtitle';
 import { Player } from '../../components/Player/Player';
-import arrowDown from '/icons/arrowDown.svg';
+import arrowDown from '/icons/arrow_down.svg';
 
 type Props = { active: boolean };
 
@@ -22,14 +22,22 @@ export const SecondPage = ({ active }: Props) => {
       <div className={styles.content}>
         <div className={styles.text}>
           <Title title={title} baseDelayMs={baseDelayMs} />
-          <Subtitle subtitle="2026 — Труповозка" delayMs={subtitleDelayMs} />
-          <Subtitle subtitle="Саундтрек для общей деградации" delayMs={subtitle2DelayMs} />
+          <Subtitle subtitle='2026 — Труповозка' delayMs={subtitleDelayMs} />
+          <Subtitle
+            subtitle='Саундтрек для общей деградации'
+            delayMs={subtitle2DelayMs}
+          />
         </div>
-        <div className={styles.playerArea}>
-          <Player barDelayMs={barDelayMs} active={active} />
-        </div>
+        <Player barDelayMs={barDelayMs} active={active} />
+        <img
+          className={styles.arrow}
+          src={arrowDown}
+          alt='Вниз'
+          style={
+            { '--arrow-delay': `${arrowDelayMs}ms` } as React.CSSProperties
+          }
+        />
       </div>
-      <img className={styles.arrow} src={arrowDown} alt="Вниз" style={{ '--arrow-delay': `${arrowDelayMs}ms` } as React.CSSProperties} />
     </div>
   );
 };
