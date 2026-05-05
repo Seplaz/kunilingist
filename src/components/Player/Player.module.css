@@ -8,7 +8,7 @@
 }
 
 .cover {
-  inline-size: calc(100vb - 459px);
+  inline-size: calc(100svb - 459px);
   max-inline-size: 303px;
   aspect-ratio: 1;
   object-fit: contain;
