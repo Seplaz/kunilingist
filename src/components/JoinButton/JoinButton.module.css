@@ -27,7 +27,6 @@
 }
 
 .button:active {
-  opacity: 0.75;
   scale: 0.95;
 }
 

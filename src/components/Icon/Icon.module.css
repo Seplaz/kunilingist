@@ -9,7 +9,7 @@
   transform: translateY(14px);
   cursor: pointer;
   padding: 8px 16px;
-  transition: background-color 200ms ease, color 200ms ease;
+  transition: background-color 200ms ease, color 200ms ease, scale 200ms ease;
   border-radius: 8px;
 }
 
@@ -18,6 +18,10 @@
   background-color: #f2ece6;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+}
+
+.iconWrapper:active {
+  scale: 0.95;
 }
 
 .iconWrapper[data-active='true'] {
