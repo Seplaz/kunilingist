@@ -5,7 +5,8 @@ type CSSVars = React.CSSProperties & {
 };
 
 type IconProps = {
-  image: string;
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  image?: string;
   alt?: string;
   className?: string;
   href?: string;
@@ -16,6 +17,7 @@ type IconProps = {
 };
 
 export const Icon = ({
+  icon: SvgIcon,
   image,
   alt = 'icon',
   className = '',
@@ -33,7 +35,11 @@ export const Icon = ({
 
   const content = (
     <>
-      <img src={image} alt={alt} className={styles.iconImage} />
+      {SvgIcon ? (
+        <SvgIcon className={styles.iconSvg} aria-hidden={text ? true : undefined} />
+      ) : image ? (
+        <img src={image} alt={alt} className={styles.iconImage} />
+      ) : null}
       {text && <span className={styles.iconText}>{text}</span>}
     </>
   );
@@ -44,6 +50,7 @@ export const Icon = ({
         href={href}
         target={target}
         rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+        aria-label={text ?? alt}
         className={rootClassName}
         style={rootStyle}
         data-active={dataActive}

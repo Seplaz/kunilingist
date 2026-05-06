@@ -8,8 +8,8 @@ import { JoinButton } from '../../components/JoinButton/JoinButton';
 import { Icon } from '../../components/Icon/Icon';
 import merch1 from '/images/merch1.png';
 import merch2 from '/images/merch2.png';
-import telegram from '/icons/telegram.svg';
-import instagram from '/icons/instagram.svg';
+import TelegramIcon from '../../assets/icons/telegram.svg?react';
+import InstagramIcon from '../../assets/icons/instagram.svg?react';
 
 type Props = { active: boolean };
 
@@ -66,7 +66,7 @@ export const ThirdPage = ({ active }: Props) => {
         <div className={styles.icons}>
           <Icon
             text='Telegram'
-            image={telegram}
+            icon={TelegramIcon}
             alt='Телеграм'
             href='https://t.me/+a0uKxz6TsexmM2Uy'
             target='_blank'
@@ -75,7 +75,7 @@ export const ThirdPage = ({ active }: Props) => {
           />
           <Icon
             text='Instagram'
-            image={instagram}
+            icon={InstagramIcon}
             alt='Инстаграм'
             href='https://www.instagram.com/kunilingist?igsh=MTdxdzdjdGxzbHhzbA%3D%3D&utm_source=qr'
             target='_blank'
