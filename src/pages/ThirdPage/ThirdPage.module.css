@@ -38,7 +38,6 @@
   flex-direction: row;
   gap: 16px;
   align-items: stretch;
-  padding-block-start: 16px;
 }
 
 [data-page='third'] .word:nth-child(1) {
@@ -47,4 +46,10 @@
 [data-page='third'] .word:nth-child(2),
 [data-page='third'] .word:nth-child(3) {
   display: inline;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
 }

@@ -1,0 +1,18 @@
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #f2ece6;
+  cursor: pointer;
+}
+
+.iconImage {
+  inline-size: 16px;
+  block-size: 16px;
+}
+
+.iconText {
+  font-size: 16px;
+}

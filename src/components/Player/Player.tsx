@@ -95,9 +95,10 @@ export const Player = ({
       {/* <img src={cover} alt='Обложка' className={styles.cover} /> */}
       <video
         src={video_cover}
-        autoPlay={true}
-        muted={true}
-        loop={true}
+        autoPlay
+        muted
+        loop
+        playsInline
         className={styles.cover}
       />
 

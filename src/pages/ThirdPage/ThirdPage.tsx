@@ -5,8 +5,11 @@ import { Subtitle } from '../../components/Subtitle/Subtitle';
 import { Footer } from '../../components/Footer/Footer';
 import { MerchItem } from '../../components/MerchItem/MerchItem';
 import { JoinButton } from '../../components/JoinButton/JoinButton';
+import { Icon } from '../../components/Icon/Icon';
 import merch1 from '/images/merch1.png';
 import merch2 from '/images/merch2.png';
+import telegram from '/icons/telegram.svg';
+import instagram from '/icons/instagram.svg';
 
 type Props = { active: boolean };
 
@@ -23,13 +26,51 @@ export const ThirdPage = ({ active }: Props) => {
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <Header />
       <div className={styles.content}>
-        <Title title={title} stackedWords baseDelayMs={baseDelayMs} page="third" />
-        <Subtitle subtitle="Присоединяйся к нашей деградации" delayMs={subtitleDelayMs} />
+        <Title
+          title={title}
+          stackedWords
+          baseDelayMs={baseDelayMs}
+          page='third'
+        />
+        <Subtitle
+          subtitle='Присоединяйся к нашей деградации'
+          delayMs={subtitleDelayMs}
+        />
         <div className={styles.merch}>
-          <MerchItem image={merch1} alt="Футболка Труповозка" delayMs={merch1DelayMs} active={active} />
-          <MerchItem image={merch2} alt="Свитшот Труповозка" delayMs={merch2DelayMs} active={active} />
+          <MerchItem
+            image={merch1}
+            alt='Футболка Труповозка'
+            delayMs={merch1DelayMs}
+            active={active}
+          />
+          <MerchItem
+            image={merch2}
+            alt='Свитшот Труповозка'
+            delayMs={merch2DelayMs}
+            active={active}
+          />
         </div>
-        <JoinButton href="https://t.me/+a0uKxz6TsexmM2Uy" delayMs={joinDelayMs} active={active} />
+        <JoinButton
+          href='https://t.me/+a0uKxz6TsexmM2Uy'
+          delayMs={joinDelayMs}
+          active={active}
+        />
+        <div className={styles.icons}>
+          <Icon
+            text='Telegram'
+            image={telegram}
+            alt='Телеграм'
+            href='https://t.me/+a0uKxz6TsexmM2Uy'
+            target='_blank'
+          />
+          <Icon
+            text='Instagram'
+            image={instagram}
+            alt='Инстаграм'
+            href='https://www.instagram.com/kunilingist?igsh=MTdxdzdjdGxzbHhzbA%3D%3D&utm_source=qr'
+            target='_blank'
+          />
+        </div>
       </div>
       <Footer />
     </div>
