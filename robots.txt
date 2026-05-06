@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kunilingist.ru/sitemap.xml
+
+Host: kunilingist.ru
+
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_/
+Disallow: /assets/
