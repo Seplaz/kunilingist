@@ -29,6 +29,8 @@ jobs:
       - run: npm run build
 
       - run: cp CNAME dist/CNAME
+      - run: cp sitemap.xml dist/sitemap.xml
+      - run: cp robots.txt dist/robots.txt
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
