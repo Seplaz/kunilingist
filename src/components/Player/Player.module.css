@@ -4,12 +4,12 @@
   align-items: center;
   inline-size: 100%;
   max-inline-size: 321px;
+  min-inline-size: 0;
   margin-inline: auto;
 }
 
 .cover {
-  inline-size: calc(100svb - 459px);
-  max-inline-size: 303px;
+  inline-size: min(303px, 100%, 48vmin, max(96px, calc(100dvb - 500px)));
   aspect-ratio: 1;
   object-fit: contain;
   display: block;
