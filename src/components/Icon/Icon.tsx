@@ -1,5 +1,9 @@
 import styles from './Icon.module.css';
 
+type CSSVars = React.CSSProperties & {
+  ['--icon-delay']?: string;
+};
+
 type IconProps = {
   image: string;
   alt?: string;
@@ -7,6 +11,8 @@ type IconProps = {
   href?: string;
   text?: string;
   target?: '_blank' | '_self';
+  delayMs?: number;
+  active?: boolean;
 };
 
 export const Icon = ({
@@ -16,7 +22,15 @@ export const Icon = ({
   href,
   text,
   target = '_self',
+  delayMs = 0,
+  active = false,
 }: IconProps) => {
+  const rootClassName = `${styles.iconWrapper} ${className}`.trim();
+  const rootStyle = {
+    '--icon-delay': `${delayMs}ms`,
+  } as CSSVars;
+  const dataActive = active ? 'true' : 'false';
+
   const content = (
     <>
       <img src={image} alt={alt} className={styles.iconImage} />
@@ -30,12 +44,22 @@ export const Icon = ({
         href={href}
         target={target}
         rel={target === '_blank' ? 'noopener noreferrer' : undefined}
-        className={`${styles.iconWrapper} ${className}`}
+        className={rootClassName}
+        style={rootStyle}
+        data-active={dataActive}
       >
         {content}
       </a>
     );
   }
 
-  return <div className={`${styles.iconWrapper} ${className}`}>{content}</div>;
+  return (
+    <div
+      className={rootClassName}
+      style={rootStyle}
+      data-active={dataActive}
+    >
+      {content}
+    </div>
+  );
 };

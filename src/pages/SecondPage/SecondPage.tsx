@@ -14,6 +14,7 @@ export const SecondPage = ({ active }: Props) => {
   const subtitleDelayMs = baseDelayMs + (wordsCount - 1) * 250 + 250;
   const subtitle2DelayMs = subtitleDelayMs + 250;
   const barDelayMs = subtitle2DelayMs + 500 + 250;
+  const coverDelayMs = barDelayMs - 250;
   const arrowDelayMs = barDelayMs + 500 + 150;
 
   return (
@@ -28,7 +29,11 @@ export const SecondPage = ({ active }: Props) => {
             delayMs={subtitle2DelayMs}
           />
         </div>
-        <Player barDelayMs={barDelayMs} active={active} />
+        <Player
+          barDelayMs={barDelayMs}
+          coverDelayMs={coverDelayMs}
+          active={active}
+        />
         <img
           className={styles.arrow}
           src={arrowDown}

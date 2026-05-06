@@ -6,6 +6,20 @@
   text-decoration: none;
   color: #f2ece6;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.iconWrapper[data-active='true'] {
+  animation: iconRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--icon-delay, 0ms);
+}
+
+@keyframes iconRise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .iconImage {
@@ -15,4 +29,12 @@
 
 .iconText {
   font-size: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iconWrapper {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
 }

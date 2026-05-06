@@ -21,6 +21,8 @@ export const ThirdPage = ({ active }: Props) => {
   const merch1DelayMs = subtitleDelayMs + 500 + 250;
   const merch2DelayMs = merch1DelayMs + 150;
   const joinDelayMs = merch2DelayMs + 500 + 150;
+  const iconTelegramDelayMs = joinDelayMs + 500 + 150;
+  const iconInstagramDelayMs = iconTelegramDelayMs + 150;
 
   return (
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
@@ -62,6 +64,8 @@ export const ThirdPage = ({ active }: Props) => {
             alt='Телеграм'
             href='https://t.me/+a0uKxz6TsexmM2Uy'
             target='_blank'
+            delayMs={iconTelegramDelayMs}
+            active={active}
           />
           <Icon
             text='Instagram'
@@ -69,6 +73,8 @@ export const ThirdPage = ({ active }: Props) => {
             alt='Инстаграм'
             href='https://www.instagram.com/kunilingist?igsh=MTdxdzdjdGxzbHhzbA%3D%3D&utm_source=qr'
             target='_blank'
+            delayMs={iconInstagramDelayMs}
+            active={active}
           />
         </div>
       </div>
