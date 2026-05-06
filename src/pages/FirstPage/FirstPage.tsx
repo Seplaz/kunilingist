@@ -16,18 +16,20 @@ export const FirstPage = ({ active }: Props) => {
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <Header />
       <div className={styles.content}>
-        <Title title={title} stackedWords baseDelayMs={baseDelayMs} />
-        <Subtitle
-          subtitle='Искусство, от которого сводит ноги'
-          delayMs={subtitleDelayMs}
-        />
-        <img
+        <div className={styles.text}>
+          <Title title={title} stackedWords baseDelayMs={baseDelayMs} />
+          <Subtitle
+            subtitle='Искусство, от которого сводит ноги'
+            delayMs={subtitleDelayMs}
+          />
+        </div>
+      </div>
+      <img
         className={styles.arrow}
         src={arrowDown}
         alt='Вниз'
         style={{ '--arrow-delay': '1450ms' } as React.CSSProperties}
-        />
-      </div>
+      />
     </div>
   );
 };

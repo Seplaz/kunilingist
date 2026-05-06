@@ -28,8 +28,21 @@
 .content {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   block-size: 100%;
   padding: 48px 52px 48px 20px;
+  gap: 16px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.merchColumn {
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
@@ -38,6 +51,28 @@
   flex-direction: row;
   gap: 16px;
   align-items: stretch;
+}
+
+.joinSlot {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .merchColumn {
+    align-self: center;
+    inline-size: 100%;
+    align-items: center;
+  }
+
+  .merch {
+    justify-content: center;
+  }
+
+  .joinSlot {
+    display: flex;
+    justify-content: center;
+    inline-size: 100%;
+  }
 }
 
 [data-page='third'] .word:nth-child(1) {

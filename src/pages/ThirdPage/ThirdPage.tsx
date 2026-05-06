@@ -28,35 +28,41 @@ export const ThirdPage = ({ active }: Props) => {
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <Header />
       <div className={styles.content}>
-        <Title
-          title={title}
-          stackedWords
-          baseDelayMs={baseDelayMs}
-          page='third'
-        />
-        <Subtitle
-          subtitle='Присоединяйся к нашей деградации'
-          delayMs={subtitleDelayMs}
-        />
-        <div className={styles.merch}>
-          <MerchItem
-            image={merch1}
-            alt='Футболка Труповозка'
-            delayMs={merch1DelayMs}
-            active={active}
+        <div className={styles.text}>
+          <Title
+            title={title}
+            stackedWords
+            baseDelayMs={baseDelayMs}
+            page='third'
           />
-          <MerchItem
-            image={merch2}
-            alt='Свитшот Труповозка'
-            delayMs={merch2DelayMs}
-            active={active}
+          <Subtitle
+            subtitle='Присоединяйся к нашей деградации'
+            delayMs={subtitleDelayMs}
           />
         </div>
-        <JoinButton
-          href='https://t.me/+a0uKxz6TsexmM2Uy'
-          delayMs={joinDelayMs}
-          active={active}
-        />
+        <div className={styles.merchColumn}>
+          <div className={styles.merch}>
+            <MerchItem
+              image={merch1}
+              alt='Футболка Труповозка'
+              delayMs={merch1DelayMs}
+              active={active}
+            />
+            <MerchItem
+              image={merch2}
+              alt='Свитшот Труповозка'
+              delayMs={merch2DelayMs}
+              active={active}
+            />
+          </div>
+          <div className={styles.joinSlot}>
+            <JoinButton
+              href='https://t.me/+a0uKxz6TsexmM2Uy'
+              delayMs={joinDelayMs}
+              active={active}
+            />
+          </div>
+        </div>
         <div className={styles.icons}>
           <Icon
             text='Telegram'

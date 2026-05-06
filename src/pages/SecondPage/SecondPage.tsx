@@ -34,15 +34,15 @@ export const SecondPage = ({ active }: Props) => {
           coverDelayMs={coverDelayMs}
           active={active}
         />
-        <img
-          className={styles.arrow}
-          src={arrowDown}
-          alt='Вниз'
-          style={
-            { '--arrow-delay': `${arrowDelayMs}ms` } as React.CSSProperties
-          }
-        />
       </div>
+      <img
+        className={styles.arrow}
+        src={arrowDown}
+        alt='Вниз'
+        style={
+          { '--arrow-delay': `${arrowDelayMs}ms` } as React.CSSProperties
+        }
+      />
     </div>
   );
 };
