@@ -106,7 +106,6 @@
   position: relative;
 }
 
-/* Анимация смены иконок play/pause */
 .playBtn .icon {
   position: absolute;
   inline-size: 16px;
@@ -135,7 +134,6 @@
   transition: width 100ms linear;
 }
 
-/* Время */
 .times {
   display: flex;
   justify-content: space-between;
