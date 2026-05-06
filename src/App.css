@@ -16,12 +16,12 @@ body {
 }
 
 .scrollContainer {
-  block-size: 100vh;
-  block-size: 100dvh;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
+  block-size: 100vh;
+  block-size: 100dvh;
   overscroll-behavior-y: contain;
   scroll-snap-type: y mandatory;
   scroll-snap-stop: always;

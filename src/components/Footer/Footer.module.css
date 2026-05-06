@@ -12,7 +12,7 @@
 
 .footer__text {
   font-weight: 700;
-  font-size: clamp(0.75rem, 0.6562rem + 0.382vw, 1rem);
+  font-size: clamp(0.75rem, 0.662rem + 0.3756vw, 1rem);
 }
 
 .footer__icons {

@@ -3,21 +3,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-inline: auto;
   inline-size: 100%;
   max-inline-size: 321px;
   min-inline-size: 0;
-  margin-inline: auto;
 }
 
 .cover {
-  inline-size: min(303px, 100%, 48vmin, max(96px, calc(100dvb - 500px)));
-  aspect-ratio: 1;
-  object-fit: contain;
   display: block;
   border-radius: 16px;
+  object-fit: contain;
   box-shadow: 0 0 16px 0 rgba(196, 21, 18, 0.8);
   opacity: 0;
   transform: translateY(14px);
+  inline-size: min(321px, 100%, 48vmin, max(96px, calc(100dvb - 500px)));
+  aspect-ratio: 1;
 }
 
 [data-active='true'] .cover {
@@ -27,17 +27,17 @@
 
 .bar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  margin-block-start: 16px;
+  border-radius: 16px;
+  padding: 16px 32px;
+  opacity: 0;
   background: rgba(242, 236, 230, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-radius: 16px;
-  padding: 16px 32px;
-  margin-block-start: 16px;
-  inline-size: 100%;
-  opacity: 0;
   transform: translateY(14px);
+  inline-size: 100%;
 }
 
 [data-active='true'] .bar {
@@ -46,16 +46,16 @@
 }
 
 .progressTrack {
-  block-size: 3px;
-  background: rgba(242, 236, 230, 0.8);
-  border-radius: 999px;
-  cursor: pointer;
   position: relative;
-  touch-action: none;
-  inline-size: 100%;
   margin-block-start: 8px;
+  border-radius: 999px;
   opacity: 0;
+  background: rgba(242, 236, 230, 0.8);
   transform: translateY(14px);
+  cursor: pointer;
+  touch-action: none;
+  block-size: 3px;
+  inline-size: 100%;
 }
 
 [data-active='true'] .progressTrack {
@@ -77,43 +77,43 @@
 }
 
 .artist {
-  font-size: 16px;
-  font-weight: 700;
-  color: #0b0c0f;
-  white-space: nowrap;
   overflow: hidden;
+  color: #0b0c0f;
+  font-weight: 700;
+  font-size: 16px;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .track {
-  font-size: 16px;
-  font-weight: 400;
-  color: #0b0c0f;
-  white-space: nowrap;
   overflow: hidden;
+  color: #0b0c0f;
+  font-weight: 400;
+  font-size: 16px;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .playBtn {
-  flex-shrink: 0;
-  border: none;
-  background: none;
-  padding: 0;
-  cursor: pointer;
+  position: relative;
   display: grid;
+  flex-shrink: 0;
   place-items: center;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
   inline-size: 16px;
   block-size: 16px;
-  position: relative;
 }
 
 .playBtn .icon {
   position: absolute;
-  inline-size: 16px;
-  block-size: 16px;
   transition:
     opacity 150ms ease,
     transform 150ms ease;
+  inline-size: 16px;
+  block-size: 16px;
 }
 
 .playBtn .iconHidden {
@@ -128,22 +128,22 @@
 }
 
 .progressFill {
-  block-size: 100%;
-  background: #f2ece6;
   border-radius: 999px;
-  pointer-events: none;
+  background: #f2ece6;
   transition: width 100ms linear;
+  pointer-events: none;
+  block-size: 100%;
 }
 
 .times {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
-  color: rgba(242, 236, 230, 0.8);
-  inline-size: 100%;
   margin-block-start: 4px;
   opacity: 0;
+  color: rgba(242, 236, 230, 0.8);
+  font-size: 12px;
   transform: translateY(14px);
+  inline-size: 100%;
 }
 
 [data-active='true'] .times {

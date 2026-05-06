@@ -1,9 +1,9 @@
 .subtitle {
-  font-size: 16px;
-  font-weight: 400;
-  color: #f2ece6;
-  font-style: italic;
   opacity: 0;
+  color: #f2ece6;
+  font-weight: 400;
+  font-size: clamp(16px, 2.8vw, 24px);
+  font-style: italic;
   transform: translateY(14px);
 }
 

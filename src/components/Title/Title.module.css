@@ -1,7 +1,7 @@
 .title {
   color: #f2ece6;
-  font-size: 30px;
   font-weight: 700;
+  font-size: clamp(30px, 5.8vw, 58px);
   letter-spacing: 2%;
 }
 
@@ -15,7 +15,6 @@
   display: block;
 }
 
-/* Для ThirdPage: первая строка "СТАТИСТИКА", вторая "И СООБЩЕСТВО" */
 [data-page="third"][data-stacked='true'] .word:nth-child(1) {
   display: block;
 }

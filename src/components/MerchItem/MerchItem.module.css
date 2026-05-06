@@ -1,18 +1,18 @@
 .item {
   display: flex;
   flex-direction: column;
+  flex: 1;
   align-items: center;
   gap: 8px;
-  background: rgba(242, 236, 230, 0.8);
   border-radius: 16px;
   padding: 16px;
-  flex: 1;
-  min-inline-size: 0;
-  max-inline-size: 150px;
+  opacity: 0;
+  background: rgba(242, 236, 230, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  opacity: 0;
   transform: translateY(14px);
+  min-inline-size: 0;
+  max-inline-size: 150px;
 }
 
 [data-active='true'] .item {
@@ -36,20 +36,20 @@
 }
 
 .image {
+  display: block;
+  object-fit: contain;
   inline-size: 100%;
   aspect-ratio: 1;
-  object-fit: contain;
-  display: block;
 }
 
 .button {
-  inline-size: 100%;
-  padding: 8px 16px;
-  border-radius: 16px;
   border: none;
-  background: #0b0c0f;
+  border-radius: 16px;
+  padding: 8px 16px;
   color: #f2ece6;
-  font-size: 12px;
   font-weight: 400;
+  font-size: 12px;
+  background: #0b0c0f;
   cursor: not-allowed;
+  inline-size: 100%;
 }

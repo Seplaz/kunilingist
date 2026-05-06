@@ -1,30 +1,30 @@
 .wrapper {
   position: fixed;
-  inset-block-start: 50%;
-  inset-inline-start: auto;
-  inset-inline-end: 20px;
-  transform: translateY(-50%);
+  z-index: 50;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  z-index: 50;
+  transform: translateY(-50%);
+  inset-block-start: 50%;
+  inset-inline-start: auto;
+  inset-inline-end: clamp(20px, 5.5vw, 48px);
 }
 
 .dot {
-  inline-size: 8px;
-  block-size: 8px;
-  border-radius: 999px;
   border: 0;
+  border-radius: 999px;
   padding: 0;
   background: rgba(242, 236, 230, 0.8);
-  cursor: pointer;
-  transform: scale(1);
   transition: transform 220ms ease, background-color 220ms ease;
+  transform: scale(1);
+  cursor: pointer;
+  inline-size: 8px;
+  block-size: 8px;
   will-change: transform;
 }
 
 .dot[data-active='true'] {
-  transform: scale(1.5);
   background: #f2ece6;
+  transform: scale(1.5);
 }
