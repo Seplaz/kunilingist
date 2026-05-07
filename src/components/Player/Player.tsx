@@ -3,9 +3,7 @@ import styles from "./Player.module.css";
 import play from "/icons/play.svg";
 import pause from "/icons/pause.svg";
 import audio from "/audio/КУНИЛИНГИСТ — Труповозка.mp3";
-// import cover from '/images/cover.png';
 import video_cover_webm from "/videos/video_cover.webm";
-// import video_cover_mp4 from "/videos/video_cover.hevc.mp4";
 
 const AUDIO_SRC = audio;
 
@@ -93,7 +91,6 @@ export const Player = ({
     >
       <audio ref={audioRef} src={AUDIO_SRC} preload="metadata" />
 
-      {/* <img src={cover} alt='Обложка' className={styles.cover} /> */}
       {active && (
         <video autoPlay muted loop playsInline src={video_cover_webm} className={styles.cover} />
       )}
