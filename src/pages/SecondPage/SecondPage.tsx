@@ -63,7 +63,7 @@ export const SecondPage = ({ active, onNext }: Props) => {
           <Subtitle subtitle="2026 — Труповозка" delayMs={subtitleDelayMs} />
 
           <Subtitle
-            subtitle="Саундтрек для общей деградации"
+            subtitle="Саундтрек ебанутого сообщества"
             delayMs={subtitle2DelayMs}
           />
         </div>
