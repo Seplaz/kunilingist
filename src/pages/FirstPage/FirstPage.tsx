@@ -24,7 +24,10 @@ const phrases = [
     title: 'КУНИЛИНГУС КАК РЕЛИГИЯ',
     subtitle: 'Присоединяйся к культу наслаждения',
   },
-  { title: 'ВЕЛИКИЙ МОГУЧИЙ ЯЗЫК', subtitle: 'Клитор есть — ума не надо' },
+  {
+    title: 'ВЕЛИКИЙ МОГУЧИЙ ЯЗЫК',
+    subtitle: 'Клитор есть — ума не надо',
+  },
 ];
 
 export const FirstPage = ({ active }: Props) => {
@@ -35,23 +38,34 @@ export const FirstPage = ({ active }: Props) => {
   const phrase = phrases[currentPhraseIndex];
 
   const baseDelayMs = 200;
+  const wordStepMs = 250;
+  const blockStepMs = 250;
+  const sectionGapMs = 500;
+
   const wordsCount = phrase.title.trim().split(/\s+/).filter(Boolean).length;
-  const subtitleDelayMs = baseDelayMs + (wordsCount - 1) * 250 + 250;
+
+  const subtitleDelayMs =
+    baseDelayMs + (wordsCount - 1) * wordStepMs + blockStepMs;
+
+  const arrowDelayMs = subtitleDelayMs + sectionGapMs + blockStepMs;
 
   return (
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <Header />
+
       <div className={styles.content}>
         <div className={styles.text}>
           <Title title={phrase.title} stackedWords baseDelayMs={baseDelayMs} />
+
           <Subtitle subtitle={phrase.subtitle} delayMs={subtitleDelayMs} />
         </div>
       </div>
+
       <img
         className={styles.arrow}
         src={arrowDown}
         alt='Вниз'
-        style={{ '--arrow-delay': '1450ms' } as React.CSSProperties}
+        style={{ '--arrow-delay': `${arrowDelayMs}ms` } as React.CSSProperties}
       />
     </div>
   );
