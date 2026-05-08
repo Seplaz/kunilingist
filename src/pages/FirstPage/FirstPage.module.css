@@ -10,18 +10,18 @@
   min-block-size: 100dvh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  background-image: url('/images/pages/page_1/background.png');
+  background-image: url('/images/pages/page_1/background.webp');
 }
 
 @media (min-width: 768px) {
   .page {
-    background-image: url('/images/pages/page_1/background_tablet.png');
+    background-image: url('/images/pages/page_1/background_tablet.webp');
   }
 }
 
 @media (min-width: 1024px) {
   .page {
-    background-image: url('/images/pages/page_1/background_desktop.png');
+    background-image: url('/images/pages/page_1/background_desktop.webp');
   }
 }
 
