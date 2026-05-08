@@ -11,7 +11,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   min-inline-size: 0;
-  inline-size: clamp(140px, 25vmin, calc(100% - 108px));
+  inline-size: clamp(calc(100% - 52px), 25vmin, calc(100% - 108px));
   aspect-ratio: 1;
 }
 
