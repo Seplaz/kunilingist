@@ -1,83 +1,102 @@
-import "./App.css";
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
-import { FirstPage } from "./pages/FirstPage/FirstPage";
-import { Scroll } from "./components/Scroll/Scroll";
-import { Loading } from "./components/Loading/Loading";
+import './App.css';
+import {
+  lazy,
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+} from 'react';
+
+import { FirstPage } from './pages/FirstPage/FirstPage';
+import { Scroll } from './components/Scroll/Scroll';
+import { Loading } from './components/Loading/Loading';
 
 const SecondPage = lazy(() =>
-  import("./pages/SecondPage/SecondPage").then((module) => ({
+  import('./pages/SecondPage/SecondPage').then((module) => ({
     default: module.SecondPage,
   })),
 );
+
 const ThirdPage = lazy(() =>
-  import("./pages/ThirdPage/ThirdPage").then((module) => ({
+  import('./pages/ThirdPage/ThirdPage').then((module) => ({
     default: module.ThirdPage,
   })),
 );
 
 export default function App() {
   const containerRef = useRef<HTMLDivElement>(null);
+
   const [activeIndex, setActiveIndex] = useState(0);
-  const [showLoading, setShowLoading] = useState(true);
   const [loadingDone, setLoadingDone] = useState(false);
 
-  const pagesCount = 3;
+  const pages = [FirstPage, SecondPage, ThirdPage];
+  const pagesCount = pages.length;
 
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
     let raf = 0;
+
     const onScroll = () => {
       cancelAnimationFrame(raf);
+
       raf = requestAnimationFrame(() => {
         const h = el.clientHeight || 1;
-        const next = Math.max(
-          0,
-          Math.min(pagesCount - 1, Math.round(el.scrollTop / h)),
-        );
-        setActiveIndex(next);
+
+        const next = Math.floor((el.scrollTop + h / 2) / h);
+
+        const safeIndex = Math.max(0, Math.min(next, pagesCount - 1));
+
+        setActiveIndex(safeIndex);
       });
     };
 
     onScroll();
-    el.addEventListener("scroll", onScroll, { passive: true });
+
+    el.addEventListener('scroll', onScroll, { passive: true });
+
     return () => {
       cancelAnimationFrame(raf);
-      el.removeEventListener("scroll", onScroll);
+      el.removeEventListener('scroll', onScroll);
     };
   }, [pagesCount]);
 
-  const scrollToIndex = (index: number) => {
-    const el = containerRef.current;
-    if (!el) return;
-    const h = el.clientHeight;
-    el.scrollTo({ top: h * index, behavior: "smooth" });
-  };
+  const scrollToIndex = useCallback(
+    (index: number) => {
+      const el = containerRef.current;
+      if (!el) return;
+
+      const safeIndex = Math.max(0, Math.min(index, pagesCount - 1));
+      const h = el.clientHeight;
+
+      el.scrollTo({
+        top: h * safeIndex,
+        behavior: 'smooth',
+      });
+    },
+    [pagesCount],
+  );
 
   return (
     <>
-      {showLoading ? (
+      {!loadingDone && (
         <Loading
-          preloadImages={["/images/pages/page_1/background.png"]}
-          onFinished={() => {
-            setShowLoading(false);
-            setLoadingDone(true);
-          }}
+          preloadImages={['/images/pages/page_1/background.png']}
+          onFinished={() => setLoadingDone(true)}
         />
-      ) : null}
-      <div className="scrollContainer" ref={containerRef}>
+      )}
+
+      <div className='scrollContainer' ref={containerRef}>
         <Suspense fallback={<Loading />}>
-          <div className="section">
-            <FirstPage active={activeIndex === 0 && loadingDone} />
-          </div>
-          <div className="section">
-            <SecondPage active={activeIndex === 1} />
-          </div>
-          <div className="section">
-            <ThirdPage active={activeIndex === 2} />
-          </div>
+          {pages.map((Page, i) => (
+            <div key={i} className='section'>
+              <Page active={i === activeIndex && (i !== 0 || loadingDone)} />
+            </div>
+          ))}
         </Suspense>
+
         <Scroll
           count={pagesCount}
           activeIndex={activeIndex}
