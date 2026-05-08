@@ -83,7 +83,7 @@ export default function App() {
     <>
       {!loadingDone && (
         <Loading
-          preloadImages={['/images/pages/page_1/background.png']}
+          preloadImages={['/images/pages/page_1/background.webp']}
           onFinished={() => setLoadingDone(true)}
         />
       )}
