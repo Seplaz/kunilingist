@@ -36,12 +36,10 @@
   inset: 0;
 
   border-radius: 16px;
-  box-shadow: 0 0 32px #c41512;
+  box-shadow: 0 0 24px #c41512;
 
   opacity: 0;
   pointer-events: none;
-
-  transition: opacity 600ms ease;
 }
 
 [data-active='true'] .coverWrapper {
@@ -50,8 +48,12 @@
 }
 
 [data-active='true'] .coverWrapper::after {
-  animation: glowPulse 3s ease-in-out infinite;
-  animation-delay: calc(var(--cover-delay, 0ms) + 500ms);
+  animation:
+    glowFadeIn 500ms var(--ease-primary) forwards,
+    glowPulse 3s ease-in-out infinite;
+  animation-delay:
+    var(--cover-delay, 0ms),
+    calc(var(--cover-delay, 0ms) + 500ms);
 }
 
 @keyframes coverRise {
@@ -64,6 +66,11 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes glowFadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.8; }
 }
 
 @keyframes glowPulse {
@@ -234,7 +241,7 @@
 /* ================= REDUCED MOTION ================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .cover,
+  .coverWrapper,
   .bar,
   .progressTrack,
   .times {
@@ -243,7 +250,7 @@
     animation: none !important;
   }
 
-  .cover::after {
+  .coverWrapper::after {
     animation: none;
     opacity: 0.8;
   }
