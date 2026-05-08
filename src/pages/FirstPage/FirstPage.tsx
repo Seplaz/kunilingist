@@ -1,31 +1,30 @@
-import styles from "./FirstPage.module.css";
-import { Header } from "../../components/Header/Header";
-import { Title } from "../../components/Title/Title";
-import { Subtitle } from "../../components/Subtitle/Subtitle";
-import arrowDown from "/icons/arrow_down.svg";
-import { useState } from "react";
+import styles from './FirstPage.module.css';
+import { Header } from '../../components/Header/Header';
+import { Title } from '../../components/Title/Title';
+import { Subtitle } from '../../components/Subtitle/Subtitle';
+import arrowDown from '/icons/arrow_down.svg';
+import { useState } from 'react';
 
 type Props = { active: boolean };
 
 const phrases = [
   {
-    title: "ПРЕВОСХОДНОЕ ВЛАДЕНИЕ ЯЗЫКОМ",
-    subtitle: "Искусство, от которого сводит ноги",
+    title: 'ПРЕВОСХОДНОЕ ВЛАДЕНИЕ ЯЗЫКОМ',
+    subtitle: 'Искусство, от которого сводит ноги',
   },
   {
-    title: "МАСТЕРСТВО ГЛУБОКОЙ ЛИНГВИСТИКИ",
-    subtitle: "Глубокий профессионалитет",
+    title: 'МАСТЕРСТВО ГЛУБОКОЙ ЛИНГВИСТИКИ',
+    subtitle: 'Шершавый профессионалитет',
   },
   {
-    title: "ПРОФЕССОР КЛИТОРАЛЬНОЙ ЛИНГВИСТИКИ",
-    subtitle: "Доктор наук по женскому удовольствию",
+    title: 'ПРОФЕССОР КЛИТОРАЛЬНОЙ ЛИНГВИСТИКИ',
+    subtitle: 'Доктор наук по женскому удовольствию',
   },
   {
-    title: "КУНИЛИНГУС КАК РЕЛИГИЯ",
-    subtitle: "Присоединяйся к культу наслаждения",
+    title: 'КУНИЛИНГУС КАК РЕЛИГИЯ',
+    subtitle: 'Присоединяйся к культу наслаждения',
   },
-  { title: "АБСОЛЮТНОЕ ВЛАДЕНИЕ ЯЗЫКОМ", subtitle: "Мастерство без границ" },
-  { title: "ВЕЛИКИЙ МОГУЧИЙ ЯЗЫК", subtitle: "Клитор есть — ума не надо" },
+  { title: 'ВЕЛИКИЙ МОГУЧИЙ ЯЗЫК', subtitle: 'Клитор есть — ума не надо' },
 ];
 
 export const FirstPage = ({ active }: Props) => {
@@ -40,7 +39,7 @@ export const FirstPage = ({ active }: Props) => {
   const subtitleDelayMs = baseDelayMs + (wordsCount - 1) * 250 + 250;
 
   return (
-    <div className={styles.page} data-active={active ? "true" : "false"}>
+    <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <Header />
       <div className={styles.content}>
         <div className={styles.text}>
@@ -51,8 +50,8 @@ export const FirstPage = ({ active }: Props) => {
       <img
         className={styles.arrow}
         src={arrowDown}
-        alt="Вниз"
-        style={{ "--arrow-delay": "1450ms" } as React.CSSProperties}
+        alt='Вниз'
+        style={{ '--arrow-delay': '1450ms' } as React.CSSProperties}
       />
     </div>
   );

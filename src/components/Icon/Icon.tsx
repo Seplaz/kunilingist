@@ -5,8 +5,7 @@ type CSSVars = React.CSSProperties & {
 };
 
 type IconProps = {
-  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  image?: string;
+  icon?: string;
   alt?: string;
   className?: string;
   href?: string;
@@ -17,8 +16,7 @@ type IconProps = {
 };
 
 export const Icon = ({
-  icon: SvgIcon,
-  image,
+  icon,
   alt = 'icon',
   className = '',
   href,
@@ -28,18 +26,23 @@ export const Icon = ({
   active = false,
 }: IconProps) => {
   const rootClassName = `${styles.iconWrapper} ${className}`.trim();
+
   const rootStyle = {
     '--icon-delay': `${delayMs}ms`,
   } as CSSVars;
+
   const dataActive = active ? 'true' : 'false';
 
   const content = (
     <>
-      {SvgIcon ? (
-        <SvgIcon className={styles.iconSvg} aria-hidden={text ? true : undefined} />
-      ) : image ? (
-        <img src={image} alt={alt} className={styles.iconImage} />
-      ) : null}
+      {icon && (
+        <img
+          src={icon}
+          alt={alt}
+          className={styles.iconImage}
+          draggable={false}
+        />
+      )}
       {text && <span className={styles.iconText}>{text}</span>}
     </>
   );
@@ -61,11 +64,7 @@ export const Icon = ({
   }
 
   return (
-    <div
-      className={rootClassName}
-      style={rootStyle}
-      data-active={dataActive}
-    >
+    <div className={rootClassName} style={rootStyle} data-active={dataActive}>
       {content}
     </div>
   );

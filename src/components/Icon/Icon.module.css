@@ -3,21 +3,13 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  border-radius: 8px;
-  padding: 8px 16px;
   opacity: 0;
-  color: #f2ece6;
   text-decoration: none;
-  transition: background-color 200ms ease, color 200ms ease, scale 200ms ease;
   transform: translateY(14px);
+  transition:
+    transform 200ms ease,
+    scale 200ms ease;
   cursor: pointer;
-}
-
-.iconWrapper:hover {
-  color: #0b0c0f;
-  background-color: #f2ece6;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
 }
 
 .iconWrapper:active {
@@ -30,25 +22,21 @@
 }
 
 @keyframes iconRise {
+  from {
+    scale: 0.8;
+  }
+
   to {
+    scale: 1;
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 .iconImage {
-  inline-size: 16px;
-  block-size: 16px;
-}
-
-.iconSvg {
-  flex: 0 0 auto;
-  inline-size: 16px;
-  block-size: 16px;
-}
-
-.iconSvg path {
-  fill: currentColor;
+  inline-size: 20px;
+  aspect-ratio: 1;
+  display: block;
 }
 
 .iconText {
@@ -60,5 +48,17 @@
     opacity: 1;
     transform: none;
     animation: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .iconImage {
+    inline-size: clamp(20px, 3.2vw, 32px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .iconImage {
+    inline-size: clamp(20px, 3.2vw, 32px);
   }
 }

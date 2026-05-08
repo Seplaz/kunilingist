@@ -36,7 +36,12 @@
 }
 
 @keyframes buttonRise {
+  from {
+    scale: 0.9;
+  }
+
   to {
+    scale: 1;
     opacity: 1;
     transform: translateY(0);
   }
