@@ -7,8 +7,8 @@ import { MerchItem } from '../../components/MerchItem/MerchItem';
 import { JoinButton } from '../../components/JoinButton/JoinButton';
 import { Icon } from '../../components/Icon/Icon';
 
-import merch1 from '/images/merch1.png';
-import merch2 from '/images/merch2.png';
+import tshirt from '/images/merch/tshirt.webp';
+import sweatshirt from '/images/merch/sweatshirt.webp';
 
 import telegram from '/icons/telegram.svg';
 import instagram from '/icons/instagram.svg';
@@ -18,7 +18,7 @@ import apple from '/icons/apple_music.svg';
 
 type Props = {
   active: boolean;
-  onNext?: () => void; // для консистентности с другими страницами
+  onNext?: () => void;
 };
 
 export const ThirdPage = ({ active }: Props) => {
@@ -93,13 +93,13 @@ export const ThirdPage = ({ active }: Props) => {
         <div className={styles.merch_container}>
           <div className={styles.merch}>
             <MerchItem
-              image={merch1}
+              image={tshirt}
               alt="Футболка Труповозка"
               delayMs={merch1DelayMs}
               active={active}
             />
             <MerchItem
-              image={merch2}
+              image={sweatshirt}
               alt="Свитшот Труповозка"
               delayMs={merch2DelayMs}
               active={active}

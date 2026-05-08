@@ -1,18 +1,18 @@
 .item {
   display: flex;
   flex-direction: column;
-  flex: 1;
   align-items: center;
   gap: 8px;
   border-radius: 16px;
   padding: 16px;
   opacity: 0;
+  transform: translateY(14px) scale(0.95);
   background: rgba(242, 236, 230, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  transform: translateY(14px);
   min-inline-size: 0;
-  max-inline-size: 150px;
+  inline-size: clamp(140px, 25vmin, calc(100% - 108px));
+  aspect-ratio: 1;
 }
 
 [data-active='true'] .item {
@@ -22,15 +22,56 @@
 
 @keyframes itemRise {
   from {
-    scale: 0.9;
+    opacity: 0;
+    transform: translateY(14px) scale(0.9);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
-    scale: 1;
+    transform: translateY(0) scale(1);
   }
 }
+
+/* ================= IMAGE ================= */
+
+.image {
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+/* ================= BUTTON ================= */
+
+.button {
+  border: none;
+  border-radius: 16px;
+  padding: 8px 16px;
+  margin-top: auto;
+  inline-size: 100%;
+  color: #f2ece6;
+  font-weight: 400;
+  font-size: clamp(12px, calc(10.6px + 0.375vw), 16px);
+  background: #0b0c0f;
+  transition:
+    background-color 200ms ease,
+    opacity 200ms ease;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  background-color: rgba(11, 12, 15, 0.8);
+}
+
+.button:not(:disabled) {
+  cursor: pointer;
+}
+
+.button:not(:disabled):hover {
+  background-color: #1a1b1f;
+}
+
+/* ================= REDUCED MOTION ================= */
 
 @media (prefers-reduced-motion: reduce) {
   .item {
@@ -38,23 +79,4 @@
     transform: none;
     animation: none !important;
   }
-}
-
-.image {
-  display: block;
-  object-fit: contain;
-  inline-size: 100%;
-  aspect-ratio: 1;
-}
-
-.button {
-  border: none;
-  border-radius: 16px;
-  padding: 8px 16px;
-  color: #f2ece6;
-  font-weight: 400;
-  font-size: 12px;
-  background: #0b0c0f;
-  cursor: not-allowed;
-  inline-size: 100%;
 }
