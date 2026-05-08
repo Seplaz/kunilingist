@@ -20,7 +20,7 @@
 }
 
 [data-active='true'] .cover {
-  animation: coverRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: coverRise 500ms var(--ease-primary) forwards;
   animation-delay: var(--cover-delay, 0ms);
 }
 
@@ -52,7 +52,7 @@
 }
 
 [data-active='true'] .bar {
-  animation: playerRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: playerRise 500ms var(--ease-primary) forwards;
   animation-delay: var(--bar-delay, 0ms);
 }
 
@@ -70,7 +70,7 @@
 }
 
 [data-active='true'] .progressTrack {
-  animation: playerRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: playerRise 500ms var(--ease-primary) forwards;
   animation-delay: var(--bar-delay, 0ms);
 }
 
@@ -163,7 +163,7 @@
 }
 
 [data-active='true'] .times {
-  animation: playerRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: playerRise 500ms var(--ease-primary) forwards;
   animation-delay: var(--bar-delay, 0ms);
 }
 

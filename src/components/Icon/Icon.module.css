@@ -17,7 +17,7 @@
 }
 
 .iconWrapper[data-active='true'] {
-  animation: iconRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: iconRise 500ms var(--ease-primary) forwards;
   animation-delay: var(--icon-delay, 0ms);
 }
 
