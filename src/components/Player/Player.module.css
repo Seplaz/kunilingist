@@ -12,7 +12,7 @@
 .cover {
   display: block;
   border-radius: 16px;
-  object-fit: contain;
+  object-fit: cover;
   box-shadow: 0 0 16px 0 rgba(196, 21, 18, 0.8);
   opacity: 0;
   transform: translateY(14px);
