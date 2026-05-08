@@ -159,15 +159,17 @@ export const Player = ({
       <audio ref={audioRef} src={AUDIO_SRC} preload="metadata" />
 
       {active && (
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          src={video_cover_webm}
-          className={styles.cover}
-        />
+        <div className={styles.coverWrapper}>
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            src={video_cover_webm}
+            className={styles.cover}
+          />
+        </div>
       )}
 
       <div className={styles.bar}>
