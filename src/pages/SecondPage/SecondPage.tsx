@@ -3,11 +3,14 @@ import { Header } from '../../components/Header/Header';
 import { Title } from '../../components/Title/Title';
 import { Subtitle } from '../../components/Subtitle/Subtitle';
 import { Player } from '../../components/Player/Player';
-import arrowDown from '/icons/arrow_down.svg';
+import { ScrollHint } from '../../components/ScrollHint/ScrollHint';
 
-type Props = { active: boolean };
+type Props = {
+  active: boolean;
+  onNext?: () => void;
+};
 
-export const SecondPage = ({ active }: Props) => {
+export const SecondPage = ({ active, onNext }: Props) => {
   const baseDelayMs = 200;
   const microDelayMs = 150;
 
@@ -32,22 +35,22 @@ export const SecondPage = ({ active }: Props) => {
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <picture>
         <source
-          media='(min-width: 1024px)'
-          srcSet='/images/pages/page_2/background_2_desktop.webp'
+          media="(min-width: 1024px)"
+          srcSet="/images/pages/page_2/background_2_desktop.webp"
         />
         <source
-          media='(min-width: 768px)'
-          srcSet='/images/pages/page_2/background_2_tablet.webp'
+          media="(min-width: 768px)"
+          srcSet="/images/pages/page_2/background_2_tablet.webp"
         />
         <img
-          src='/images/pages/page_2/background_2.webp'
-          alt=''
+          src="/images/pages/page_2/background_2.webp"
+          alt=""
           className={styles.background_image}
-          loading='lazy'
-          decoding='async'
-          fetchPriority='low'
-          width='1920'
-          height='1080'
+          loading="lazy"
+          decoding="async"
+          fetchPriority="low"
+          width="1920"
+          height="1080"
         />
       </picture>
 
@@ -57,10 +60,10 @@ export const SecondPage = ({ active }: Props) => {
         <div className={styles.text}>
           <Title title={title} baseDelayMs={baseDelayMs} />
 
-          <Subtitle subtitle='2026 — Труповозка' delayMs={subtitleDelayMs} />
+          <Subtitle subtitle="2026 — Труповозка" delayMs={subtitleDelayMs} />
 
           <Subtitle
-            subtitle='Саундтрек для общей деградации'
+            subtitle="Саундтрек для общей деградации"
             delayMs={subtitle2DelayMs}
           />
         </div>
@@ -72,11 +75,10 @@ export const SecondPage = ({ active }: Props) => {
         />
       </div>
 
-      <img
-        className={styles.arrow}
-        src={arrowDown}
-        alt='Вниз'
-        style={{ '--arrow-delay': `${arrowDelayMs}ms` } as React.CSSProperties}
+      <ScrollHint
+        delayMs={arrowDelayMs}
+        active={active}
+        onClick={onNext}
       />
     </div>
   );

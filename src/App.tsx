@@ -33,6 +33,8 @@ export default function App() {
   const pages = [FirstPage, SecondPage, ThirdPage];
   const pagesCount = pages.length;
 
+  /* ---------------- Scroll Tracking ---------------- */
+
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -54,7 +56,6 @@ export default function App() {
     };
 
     onScroll();
-
     el.addEventListener('scroll', onScroll, { passive: true });
 
     return () => {
@@ -62,6 +63,8 @@ export default function App() {
       el.removeEventListener('scroll', onScroll);
     };
   }, [pagesCount]);
+
+  /* ---------------- Scroll To Index ---------------- */
 
   const scrollToIndex = useCallback(
     (index: number) => {
@@ -79,6 +82,8 @@ export default function App() {
     [pagesCount],
   );
 
+  /* ---------------- Render ---------------- */
+
   return (
     <>
       {!loadingDone && (
@@ -88,13 +93,21 @@ export default function App() {
         />
       )}
 
-      <div className='scrollContainer' ref={containerRef}>
+      <div className="scrollContainer" ref={containerRef}>
         <Suspense fallback={<Loading />}>
-          {pages.map((Page, i) => (
-            <div key={i} className='section'>
-              <Page active={i === activeIndex && (i !== 0 || loadingDone)} />
-            </div>
-          ))}
+          {pages.map((Page, i) => {
+            const isActive = i === activeIndex && (i !== 0 || loadingDone);
+            const hasNext = i < pagesCount - 1;
+
+            return (
+              <div key={i} className="section">
+                <Page
+                  active={isActive}
+                  onNext={hasNext ? () => scrollToIndex(i + 1) : undefined}
+                />
+              </div>
+            );
+          })}
         </Suspense>
 
         <Scroll

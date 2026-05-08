@@ -16,7 +16,10 @@ import yandex from '/icons/yandex.svg';
 import spotify from '/icons/spotify.svg';
 import apple from '/icons/apple_music.svg';
 
-type Props = { active: boolean };
+type Props = {
+  active: boolean;
+  onNext?: () => void; // для консистентности с другими страницами
+};
 
 export const ThirdPage = ({ active }: Props) => {
   const baseDelayMs = 200;
@@ -35,10 +38,14 @@ export const ThirdPage = ({ active }: Props) => {
   const socialIcons = [
     {
       icon: instagram,
-      alt: 'Инстаграм',
+      alt: 'Instagram',
       href: 'https://www.instagram.com/kunilingist?igsh=MTdxdzdjdGxzbHhzbA%3D%3D&utm_source=qr',
     },
-    { icon: telegram, alt: 'Телеграм', href: 'https://t.me/+a0uKxz6TsexmM2Uy' },
+    {
+      icon: telegram,
+      alt: 'Telegram',
+      href: 'https://t.me/+a0uKxz6TsexmM2Uy',
+    },
     { icon: yandex, alt: 'Yandex Music' },
     { icon: spotify, alt: 'Spotify' },
     { icon: apple, alt: 'Apple Music' },
@@ -48,22 +55,22 @@ export const ThirdPage = ({ active }: Props) => {
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <picture>
         <source
-          media='(min-width: 1024px)'
-          srcSet='/images/pages/page_3/background_3_desktop.png'
+          media="(min-width: 1024px)"
+          srcSet="/images/pages/page_3/background_3_desktop.png"
         />
         <source
-          media='(min-width: 768px)'
-          srcSet='/images/pages/page_3/background_3_tablet.png'
+          media="(min-width: 768px)"
+          srcSet="/images/pages/page_3/background_3_tablet.png"
         />
         <img
-          src='/images/pages/page_3/background_3.png'
-          alt=''
+          src="/images/pages/page_3/background_3.png"
+          alt=""
           className={styles.background_image}
-          loading='lazy'
-          decoding='async'
-          fetchPriority='low'
-          width='1920'
-          height='1080'
+          loading="lazy"
+          decoding="async"
+          fetchPriority="low"
+          width="1920"
+          height="1080"
         />
       </picture>
 
@@ -75,10 +82,10 @@ export const ThirdPage = ({ active }: Props) => {
             title={title}
             stackedWords
             baseDelayMs={baseDelayMs}
-            page='third'
+            page="third"
           />
           <Subtitle
-            subtitle='Присоединяйся к нашей деградации'
+            subtitle="Присоединяйся к нашей деградации"
             delayMs={subtitleDelayMs}
           />
         </div>
@@ -87,13 +94,13 @@ export const ThirdPage = ({ active }: Props) => {
           <div className={styles.merch}>
             <MerchItem
               image={merch1}
-              alt='Футболка Труповозка'
+              alt="Футболка Труповозка"
               delayMs={merch1DelayMs}
               active={active}
             />
             <MerchItem
               image={merch2}
-              alt='Свитшот Труповозка'
+              alt="Свитшот Труповозка"
               delayMs={merch2DelayMs}
               active={active}
             />
@@ -101,14 +108,12 @@ export const ThirdPage = ({ active }: Props) => {
         </div>
 
         <JoinButton
-            href='https://t.me/+a0uKxz6TsexmM2Uy'
+            href="https://t.me/+a0uKxz6TsexmM2Uy"
             delayMs={joinDelayMs}
             active={active}
           />
 
         <div className={styles.social_container}>
-
-
           <div className={styles.icons}>
             {socialIcons.map((item, index) => (
               <Icon
@@ -116,7 +121,7 @@ export const ThirdPage = ({ active }: Props) => {
                 icon={item.icon}
                 alt={item.alt}
                 href={item.href}
-                target='_blank'
+                target="_blank"
                 delayMs={iconsBaseDelayMs + iconStepMs * index}
                 active={active}
               />

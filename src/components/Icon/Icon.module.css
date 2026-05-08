@@ -5,10 +5,10 @@
   gap: 8px;
   opacity: 0;
   text-decoration: none;
-  transform: translateY(14px);
   transition:
     transform 200ms ease,
     scale 200ms ease;
+  transform: translateY(14px);
   cursor: pointer;
 }
 
@@ -27,16 +27,16 @@
   }
 
   to {
-    scale: 1;
     opacity: 1;
     transform: translateY(0);
+    scale: 1;
   }
 }
 
 .iconImage {
+  display: block;
   inline-size: clamp(20px, 3.2vw, 32px);
   aspect-ratio: 1;
-  display: block;
 }
 
 .iconText {

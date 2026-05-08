@@ -48,7 +48,7 @@
 @media (prefers-reduced-motion: reduce) {
   .overlay[data-hidden='true'] .bg,
   .overlay[data-hidden='true'] .icon {
-    animation: none;
     opacity: 0;
+    animation: none;
   }
 }

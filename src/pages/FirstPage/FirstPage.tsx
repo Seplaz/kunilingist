@@ -2,10 +2,13 @@ import styles from './FirstPage.module.css';
 import { Header } from '../../components/Header/Header';
 import { Title } from '../../components/Title/Title';
 import { Subtitle } from '../../components/Subtitle/Subtitle';
-import arrowDown from '/icons/arrow_down.svg';
+import { ScrollHint } from '../../components/ScrollHint/ScrollHint';
 import { useState } from 'react';
 
-type Props = { active: boolean };
+type Props = {
+  active: boolean;
+  onNext?: () => void;
+};
 
 const phrases = [
   {
@@ -30,7 +33,7 @@ const phrases = [
   },
 ];
 
-export const FirstPage = ({ active }: Props) => {
+export const FirstPage = ({ active, onNext }: Props) => {
   const [currentPhraseIndex] = useState(() =>
     Math.floor(Math.random() * phrases.length),
   );
@@ -53,22 +56,22 @@ export const FirstPage = ({ active }: Props) => {
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <picture>
         <source
-          media='(min-width: 1024px)'
-          srcSet='/images/pages/page_1/background_desktop.webp'
+          media="(min-width: 1024px)"
+          srcSet="/images/pages/page_1/background_desktop.webp"
         />
         <source
-          media='(min-width: 768px)'
-          srcSet='/images/pages/page_1/background_tablet.webp'
+          media="(min-width: 768px)"
+          srcSet="/images/pages/page_1/background_tablet.webp"
         />
         <img
-          src='/images/pages/page_1/background.webp'
-          alt=''
+          src="/images/pages/page_1/background.webp"
+          alt=""
           className={styles.background_image}
-          fetchPriority='high'
-          loading='eager'
-          decoding='async'
-          width='1920'
-          height='1080'
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
+          width="1920"
+          height="1080"
         />
       </picture>
 
@@ -81,11 +84,10 @@ export const FirstPage = ({ active }: Props) => {
         </div>
       </div>
 
-      <img
-        className={styles.arrow}
-        src={arrowDown}
-        alt='Вниз'
-        style={{ '--arrow-delay': `${arrowDelayMs}ms` } as React.CSSProperties}
+      <ScrollHint
+        delayMs={arrowDelayMs}
+        active={active}
+        onClick={onNext}
       />
     </div>
   );
