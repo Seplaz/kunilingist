@@ -52,6 +52,7 @@
 
 .button_container {
   align-self: center;
+  inline-size: 100%;
   max-inline-size: 332px;
 }
 

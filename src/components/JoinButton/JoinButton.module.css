@@ -1,25 +1,29 @@
 .button {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
   box-sizing: border-box;
-  border-radius: 16px;
+  inline-size: 100%;
+  max-inline-size: 332px;
   padding: 16px 32px;
-  opacity: 0;
-  color: #0b0c0f;
-  font-weight: 700;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
+  border-radius: 16px;
   background: rgba(242, 236, 230, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  color: #0b0c0f;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(14px) scale(0.95);
   transition:
     opacity 200ms ease,
-    scale 200ms ease,
+    transform 200ms ease,
     background-color 200ms ease;
-  transform: translateY(14px);
-  inline-size: 100%;
-  max-inline-size: 321px;
 }
 
 .button:hover {
@@ -27,23 +31,18 @@
 }
 
 .button:active {
-  scale: 0.95;
+  transform: translateY(0) scale(0.95);
 }
 
-[data-active='true'] .button {
+.button[data-active='true'] {
   animation: buttonRise 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   animation-delay: var(--d, 0ms);
 }
 
 @keyframes buttonRise {
-  from {
-    scale: 0.9;
-  }
-
   to {
-    scale: 1;
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -52,5 +51,6 @@
     opacity: 1;
     transform: none;
     animation: none !important;
+    transition: none;
   }
 }

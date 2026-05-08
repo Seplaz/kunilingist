@@ -66,13 +66,11 @@ export const ThirdPage = ({ active }: Props) => {
           </div>
         </div>
         <div className={styles.social_container}>
-          <div className={styles.button_container}>
-            <JoinButton
-              href='https://t.me/+a0uKxz6TsexmM2Uy'
-              delayMs={joinDelayMs}
-              active={active}
-            />
-          </div>
+          <JoinButton
+            href='https://t.me/+a0uKxz6TsexmM2Uy'
+            delayMs={joinDelayMs}
+            active={active}
+          />
           <div className={styles.icons}>
             <Icon
               icon={telegram}

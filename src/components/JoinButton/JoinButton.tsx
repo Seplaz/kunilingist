@@ -18,18 +18,15 @@ export const JoinButton = ({
   active = false,
 }: Props) => {
   return (
-    <div
+    <a
+      className={styles.button}
       data-active={active ? 'true' : 'false'}
       style={{ '--d': `${delayMs}ms` } as CSSVars}
+      href={href}
+      target='_blank'
+      rel='noopener noreferrer'
     >
-      <a
-        href={href}
-        target='_blank'
-        rel='noopener noreferrer'
-        className={styles.button}
-      >
-        {label}
-      </a>
-    </div>
+      {label}
+    </a>
   );
 };

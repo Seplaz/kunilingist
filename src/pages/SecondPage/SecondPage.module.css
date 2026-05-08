@@ -62,7 +62,12 @@
 }
 
 @keyframes arrowRise {
+  from {
+    scale: 0.8;
+  }
+
   to {
+    scale: 1;
     opacity: 0.8;
     transform: translateY(0);
   }
