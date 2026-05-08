@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   justify-self: center;
-  align-self: center;
+  align-self: start;
   box-sizing: border-box;
   inline-size: 100%;
   max-inline-size: 332px;

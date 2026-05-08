@@ -34,7 +34,7 @@
 }
 
 .iconImage {
-  inline-size: 20px;
+  inline-size: clamp(20px, 3.2vw, 32px);
   aspect-ratio: 1;
   display: block;
 }
@@ -48,17 +48,5 @@
     opacity: 1;
     transform: none;
     animation: none !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .iconImage {
-    inline-size: clamp(20px, 3.2vw, 32px);
-  }
-}
-
-@media (min-width: 1024px) {
-  .iconImage {
-    inline-size: clamp(20px, 3.2vw, 32px);
   }
 }
