@@ -47,7 +47,7 @@ export default function App() {
       raf = requestAnimationFrame(() => {
         const h = el.clientHeight || 1;
 
-        const next = Math.floor((el.scrollTop + h / 2) / h);
+        const next = Math.floor((el.scrollTop + h / 6) / h);
 
         const safeIndex = Math.max(0, Math.min(next, pagesCount - 1));
 
