@@ -50,7 +50,7 @@
   display: flex;
   flex-direction: column;
   gap: clamp(16px, 3.2vw, 32px);
-  padding-bottom: 48px;
+  padding-bottom: clamp(16px, 3.2vw, 32px);
 }
 
 .icons {
