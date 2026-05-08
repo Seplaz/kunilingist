@@ -51,12 +51,32 @@ export const FirstPage = ({ active }: Props) => {
 
   return (
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
+      <picture>
+        <source
+          media='(min-width: 1024px)'
+          srcSet='/images/pages/page_1/background_desktop.webp'
+        />
+        <source
+          media='(min-width: 768px)'
+          srcSet='/images/pages/page_1/background_tablet.webp'
+        />
+        <img
+          src='/images/pages/page_1/background.webp'
+          alt=''
+          className={styles.background_image}
+          fetchPriority='high'
+          loading='eager'
+          decoding='async'
+          width='1920'
+          height='1080'
+        />
+      </picture>
+
       <Header />
 
       <div className={styles.content}>
         <div className={styles.text}>
           <Title title={phrase.title} stackedWords baseDelayMs={baseDelayMs} />
-
           <Subtitle subtitle={phrase.subtitle} delayMs={subtitleDelayMs} />
         </div>
       </div>

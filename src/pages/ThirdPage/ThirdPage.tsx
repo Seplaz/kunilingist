@@ -38,27 +38,35 @@ export const ThirdPage = ({ active }: Props) => {
       alt: 'Инстаграм',
       href: 'https://www.instagram.com/kunilingist?igsh=MTdxdzdjdGxzbHhzbA%3D%3D&utm_source=qr',
     },
-    {
-      icon: telegram,
-      alt: 'Телеграм',
-      href: 'https://t.me/+a0uKxz6TsexmM2Uy',
-    },
-    {
-      icon: yandex,
-      alt: 'Yandex Music',
-    },
-    {
-      icon: spotify,
-      alt: 'Spotify',
-    },
-    {
-      icon: apple,
-      alt: 'Apple Music',
-    },
+    { icon: telegram, alt: 'Телеграм', href: 'https://t.me/+a0uKxz6TsexmM2Uy' },
+    { icon: yandex, alt: 'Yandex Music' },
+    { icon: spotify, alt: 'Spotify' },
+    { icon: apple, alt: 'Apple Music' },
   ];
 
   return (
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
+      <picture>
+        <source
+          media='(min-width: 1024px)'
+          srcSet='/images/pages/page_3/background_3_desktop.png'
+        />
+        <source
+          media='(min-width: 768px)'
+          srcSet='/images/pages/page_3/background_3_tablet.png'
+        />
+        <img
+          src='/images/pages/page_3/background_3.png'
+          alt=''
+          className={styles.background_image}
+          loading='lazy'
+          decoding='async'
+          fetchPriority='low'
+          width='1920'
+          height='1080'
+        />
+      </picture>
+
       <Header />
 
       <div className={styles.content}>
@@ -69,7 +77,6 @@ export const ThirdPage = ({ active }: Props) => {
             baseDelayMs={baseDelayMs}
             page='third'
           />
-
           <Subtitle
             subtitle='Присоединяйся к нашей деградации'
             delayMs={subtitleDelayMs}

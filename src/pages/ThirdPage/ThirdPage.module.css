@@ -3,14 +3,20 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: url('/images/pages/page_3/background_3.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  block-size: 100vh;
   block-size: 100dvh;
+  min-block-size: 100dvh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  overflow: hidden;
+}
+
+.background_image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
 .content {
@@ -31,15 +37,12 @@
 
 .merch_container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .merch {
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
   gap: clamp(16px, 3.2vw, 32px);
 }
 
@@ -47,21 +50,7 @@
   display: flex;
   flex-direction: column;
   gap: clamp(16px, 3.2vw, 32px);
-  padding: 0 0 48px 0;
-}
-
-.button_container {
-  align-self: center;
-  inline-size: 100%;
-  max-inline-size: 332px;
-}
-
-[data-page='third'] .word:nth-child(1) {
-  display: block;
-}
-[data-page='third'] .word:nth-child(2),
-[data-page='third'] .word:nth-child(3) {
-  display: inline;
+  padding-bottom: 48px;
 }
 
 .icons {
@@ -72,39 +61,17 @@
 }
 
 @media (min-width: 768px) {
-  .page {
-    background-image: url('/images/pages/page_3/background_3_tablet.png');
-  }
-
-  .merch_container {
-    align-items: center;
-    inline-size: 100%;
-  }
-
   .merch {
     justify-content: center;
   }
 
   .icons {
     justify-content: space-between;
-    align-items: end;
-    padding: 0;
   }
 }
 
 @media (min-width: 1024px) {
-  .page {
-    background-image: url('/images/pages/page_3/background_3_desktop.png');
-  }
-
   .social_container {
-    display: flex;
-    flex-direction: column;
     gap: clamp(16px, 3.2vw, 48px);
-    padding: 0 0 48px 0;
-  }
-
-  .icons {
-    padding: 0;
   }
 }

@@ -30,6 +30,27 @@ export const SecondPage = ({ active }: Props) => {
 
   return (
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
+      <picture>
+        <source
+          media='(min-width: 1024px)'
+          srcSet='/images/pages/page_2/background_2_desktop.webp'
+        />
+        <source
+          media='(min-width: 768px)'
+          srcSet='/images/pages/page_2/background_2_tablet.webp'
+        />
+        <img
+          src='/images/pages/page_2/background_2.webp'
+          alt=''
+          className={styles.background_image}
+          loading='lazy'
+          decoding='async'
+          fetchPriority='low'
+          width='1920'
+          height='1080'
+        />
+      </picture>
+
       <Header />
 
       <div className={styles.content}>
