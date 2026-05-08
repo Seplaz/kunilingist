@@ -1,7 +1,7 @@
 import styles from "./MerchItem.module.css";
 
 type CSSVars = React.CSSProperties & {
-	["--d"]?: string;
+	"--d"?: string;
 };
 
 type Props = {

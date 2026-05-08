@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import styles from "./Player.module.css";
-import play from "/icons/play.svg";
-import pause from "/icons/pause.svg";
 import audio from "/audio/КУНИЛИНГИСТ — Труповозка.mp3";
+import pause from "/icons/pause.svg";
+import play from "/icons/play.svg";
 import video_cover_webm from "/videos/video_cover.webm";
+import styles from "./Player.module.css";
 
 const AUDIO_SRC = audio;
 
 type CSSVars = React.CSSProperties & {
-	["--bar-delay"]?: string;
-	["--cover-delay"]?: string;
+	"--bar-delay"?: string;
+	"--cover-delay"?: string;
 };
 
 type Props = {
@@ -79,7 +79,7 @@ export const Player = ({
 
 	const seek = (e: React.PointerEvent<HTMLDivElement>) => {
 		const audio = audioRef.current;
-		if (!audio || !audio.duration) return;
+		if (!audio?.duration) return;
 
 		const rect = e.currentTarget.getBoundingClientRect();
 		const ratio = Math.max(
@@ -97,15 +97,12 @@ export const Player = ({
 			const video = videoRef.current;
 			if (!video) return;
 
-			// 🔥 Самый стабильный способ
 			const wasPlaying = !video.paused;
 
 			video.style.display = "none";
-			// force layout
 			void video.offsetHeight;
 			video.style.display = "";
 
-			// перезапуск видео если нужно
 			if (wasPlaying) {
 				video.play().catch(() => {});
 			}
@@ -113,33 +110,20 @@ export const Player = ({
 
 		const handleVisibility = () => {
 			if (!document.hidden) {
-				// небольшой таймаут даёт браузеру пересчитать viewport
 				setTimeout(forceReflow, 50);
 			}
 		};
 
-		const handleResize = () => {
-			forceReflow();
-		};
-
-		const handlePageShow = () => {
-			forceReflow();
-		};
-
-		const handleFocus = () => {
-			forceReflow();
-		};
-
 		document.addEventListener("visibilitychange", handleVisibility);
-		window.addEventListener("resize", handleResize);
-		window.addEventListener("pageshow", handlePageShow);
-		window.addEventListener("focus", handleFocus);
+		window.addEventListener("resize", forceReflow);
+		window.addEventListener("pageshow", forceReflow);
+		window.addEventListener("focus", forceReflow);
 
 		return () => {
 			document.removeEventListener("visibilitychange", handleVisibility);
-			window.removeEventListener("resize", handleResize);
-			window.removeEventListener("pageshow", handlePageShow);
-			window.removeEventListener("focus", handleFocus);
+			window.removeEventListener("resize", forceReflow);
+			window.removeEventListener("pageshow", forceReflow);
+			window.removeEventListener("focus", forceReflow);
 		};
 	}, []);
 
@@ -179,6 +163,7 @@ export const Player = ({
 				</div>
 
 				<button
+					type="button"
 					className={styles.playBtn}
 					onClick={togglePlay}
 					aria-label={playing ? "Пауза" : "Воспроизвести"}
@@ -204,10 +189,23 @@ export const Player = ({
 				className={styles.progressTrack}
 				onPointerDown={seek}
 				role="slider"
+				tabIndex={0}
 				aria-label="Прогресс"
 				aria-valuenow={Math.round(currentTime)}
 				aria-valuemin={0}
 				aria-valuemax={Math.round(duration)}
+				onKeyDown={(e) => {
+					const audio = audioRef.current;
+					if (!audio?.duration) return;
+
+					if (e.key === "ArrowRight") {
+						audio.currentTime = Math.min(audio.currentTime + 5, audio.duration);
+					}
+
+					if (e.key === "ArrowLeft") {
+						audio.currentTime = Math.max(audio.currentTime - 5, 0);
+					}
+				}}
 			>
 				<div
 					className={styles.progressFill}

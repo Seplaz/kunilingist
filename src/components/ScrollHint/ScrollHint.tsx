@@ -1,5 +1,5 @@
-import styles from "./ScrollHint.module.css";
 import arrowDown from "/icons/arrow_down.svg";
+import styles from "./ScrollHint.module.css";
 
 type Props = {
 	delayMs?: number;

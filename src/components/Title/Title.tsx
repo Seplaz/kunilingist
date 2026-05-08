@@ -1,9 +1,8 @@
-import React from "react";
 import styles from "./Title.module.css";
 
 type CSSVars = React.CSSProperties & {
-	["--d"]?: string;
-	["--base"]?: string;
+	"--d"?: string;
+	"--base"?: string;
 };
 
 type Props = {
@@ -30,15 +29,14 @@ export const Title = ({
 			style={{ "--base": `${baseDelayMs}ms` } as CSSVars}
 		>
 			{words.map((w, i) => (
-				<React.Fragment key={`${w}-${i}`}>
-					<span
-						className={styles.word}
-						style={{ "--d": `${i * 250}ms` } as CSSVars}
-					>
-						{w}
-					</span>
+				<span
+					key={w}
+					className={styles.word}
+					style={{ "--d": `${i * 250}ms` } as CSSVars}
+				>
+					{w}
 					{!stackedWords && i < words.length - 1 ? " " : null}
-				</React.Fragment>
+				</span>
 			))}
 		</h1>
 	);

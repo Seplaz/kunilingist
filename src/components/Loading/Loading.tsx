@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import styles from "./Loading.module.css";
 import loading from "/icons/loading.svg";
+import styles from "./Loading.module.css";
 
 type Props = {
 	minDurationMs?: number;

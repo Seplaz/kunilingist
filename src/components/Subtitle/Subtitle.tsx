@@ -3,7 +3,7 @@ import styles from "./Subtitle.module.css";
 type Props = { subtitle: string; delayMs?: number };
 
 type CSSVars = React.CSSProperties & {
-	["--d"]?: string;
+	"--d"?: string;
 };
 
 export const Subtitle = ({ subtitle, delayMs = 0 }: Props) => {

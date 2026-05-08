@@ -1,7 +1,7 @@
 import styles from "./JoinButton.module.css";
 
 type CSSVars = React.CSSProperties & {
-	["--d"]?: string;
+	"--d"?: string;
 };
 
 type Props = {

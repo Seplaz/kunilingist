@@ -1,20 +1,18 @@
-import styles from "./ThirdPage.module.css";
-import { Header } from "../../components/Header/Header";
-import { Title } from "../../components/Title/Title";
-import { Subtitle } from "../../components/Subtitle/Subtitle";
-import { Footer } from "../../components/Footer/Footer";
-import { MerchItem } from "../../components/MerchItem/MerchItem";
-import { JoinButton } from "../../components/JoinButton/JoinButton";
-import { Icon } from "../../components/Icon/Icon";
-
-import tshirt from "/images/merch/tshirt.webp";
-import sweatshirt from "/images/merch/sweatshirt.webp";
-
-import telegram from "/icons/telegram.svg";
-import instagram from "/icons/instagram.svg";
-import yandex from "/icons/yandex.svg";
-import spotify from "/icons/spotify.svg";
 import apple from "/icons/apple_music.svg";
+import instagram from "/icons/instagram.svg";
+import spotify from "/icons/spotify.svg";
+import telegram from "/icons/telegram.svg";
+import yandex from "/icons/yandex.svg";
+import sweatshirt from "/images/merch/sweatshirt.webp";
+import tshirt from "/images/merch/tshirt.webp";
+import { Footer } from "../../components/Footer/Footer";
+import { Header } from "../../components/Header/Header";
+import { Icon } from "../../components/Icon/Icon";
+import { JoinButton } from "../../components/JoinButton/JoinButton";
+import { MerchItem } from "../../components/MerchItem/MerchItem";
+import { Subtitle } from "../../components/Subtitle/Subtitle";
+import { Title } from "../../components/Title/Title";
+import styles from "./ThirdPage.module.css";
 
 type Props = {
 	active: boolean;

@@ -2,15 +2,14 @@ import "./App.css";
 import {
 	lazy,
 	Suspense,
+	useCallback,
 	useEffect,
 	useRef,
 	useState,
-	useCallback,
 } from "react";
-
-import { FirstPage } from "./pages/FirstPage/FirstPage";
-import { Scroll } from "./components/Scroll/Scroll";
 import { Loading } from "./components/Loading/Loading";
+import { Scroll } from "./components/Scroll/Scroll";
+import { FirstPage } from "./pages/FirstPage/FirstPage";
 
 const SecondPage = lazy(() =>
 	import("./pages/SecondPage/SecondPage").then((module) => ({
@@ -30,7 +29,12 @@ export default function App() {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [loadingDone, setLoadingDone] = useState(false);
 
-	const pages = [FirstPage, SecondPage, ThirdPage];
+	const pages = [
+		{ key: "first", Component: FirstPage },
+		{ key: "second", Component: SecondPage },
+		{ key: "third", Component: ThirdPage },
+	];
+
 	const pagesCount = pages.length;
 
 	/* ---------------- Scroll Tracking ---------------- */
@@ -95,15 +99,16 @@ export default function App() {
 
 			<div className="scrollContainer" ref={containerRef}>
 				<Suspense fallback={<Loading />}>
-					{pages.map((Page, i) => {
-						const isActive = i === activeIndex && (i !== 0 || loadingDone);
-						const hasNext = i < pagesCount - 1;
+					{pages.map(({ key, Component }, index) => {
+						const isActive =
+							index === activeIndex && (index !== 0 || loadingDone);
+						const hasNext = index < pagesCount - 1;
 
 						return (
-							<div key={i} className="section">
-								<Page
+							<div key={key} className="section">
+								<Component
 									active={isActive}
-									onNext={hasNext ? () => scrollToIndex(i + 1) : undefined}
+									onNext={hasNext ? () => scrollToIndex(index + 1) : undefined}
 								/>
 							</div>
 						);

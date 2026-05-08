@@ -1,7 +1,7 @@
 import styles from "./Icon.module.css";
 
 type CSSVars = React.CSSProperties & {
-	["--icon-delay"]?: string;
+	"--icon-delay"?: string;
 };
 
 type IconProps = {

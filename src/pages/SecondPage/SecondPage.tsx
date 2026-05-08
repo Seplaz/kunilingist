@@ -1,9 +1,9 @@
-import styles from "./SecondPage.module.css";
 import { Header } from "../../components/Header/Header";
-import { Title } from "../../components/Title/Title";
-import { Subtitle } from "../../components/Subtitle/Subtitle";
 import { Player } from "../../components/Player/Player";
 import { ScrollHint } from "../../components/ScrollHint/ScrollHint";
+import { Subtitle } from "../../components/Subtitle/Subtitle";
+import { Title } from "../../components/Title/Title";
+import styles from "./SecondPage.module.css";
 
 type Props = {
 	active: boolean;
