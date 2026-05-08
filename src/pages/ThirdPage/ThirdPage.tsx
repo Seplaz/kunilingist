@@ -85,7 +85,7 @@ export const ThirdPage = ({ active }: Props) => {
             page="third"
           />
           <Subtitle
-            subtitle="Присоединяйся к нашей деградации"
+            subtitle="Присоединяйся к деградации"
             delayMs={subtitleDelayMs}
           />
         </div>
