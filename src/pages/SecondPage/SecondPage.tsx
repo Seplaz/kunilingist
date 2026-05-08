@@ -9,6 +9,7 @@ type Props = { active: boolean };
 
 export const SecondPage = ({ active }: Props) => {
   const baseDelayMs = 200;
+  const microDelayMs = 150;
 
   const title = 'НОВЫЙ СИНГЛ';
   const wordsCount = title.trim().split(/\s+/).filter(Boolean).length;
@@ -25,7 +26,7 @@ export const SecondPage = ({ active }: Props) => {
   const playerBarDelayMs = subtitle2DelayMs + sectionGapMs + blockStepMs;
   const playerCoverDelayMs = playerBarDelayMs - blockStepMs;
 
-  const arrowDelayMs = playerBarDelayMs + sectionGapMs + 150;
+  const arrowDelayMs = playerBarDelayMs + sectionGapMs + microDelayMs;
 
   return (
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
