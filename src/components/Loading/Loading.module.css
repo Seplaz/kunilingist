@@ -1,54 +1,54 @@
 .overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	display: grid;
+	place-items: center;
+	overflow: hidden;
 }
 
 .bg {
-  position: absolute;
-  inset: 0;
-  background: #0b0c0f;
+	position: absolute;
+	inset: 0;
+	background: #0b0c0f;
 }
 
 .icon {
-  position: relative;
-  z-index: 1;
-  opacity: 1;
-  transform: translateY(0) scale(1);
+	position: relative;
+	z-index: 1;
+	opacity: 1;
+	transform: translateY(0) scale(1);
 }
 
-.overlay[data-hidden='true'] .bg {
-  animation: bgShrink 500ms var(--ease-primary) forwards;
+.overlay[data-hidden="true"] .bg {
+	animation: bgShrink 500ms var(--ease-primary) forwards;
 }
 
-.overlay[data-hidden='true'] .icon {
-  animation: iconFade 500ms var(--ease-primary) forwards;
-  animation-delay: 500ms;
+.overlay[data-hidden="true"] .icon {
+	animation: iconFade 500ms var(--ease-primary) forwards;
+	animation-delay: 500ms;
 }
 
 @keyframes bgShrink {
-  from {
-    clip-path: inset(0% 0% 0% 0%);
-  }
-  to {
-    clip-path: inset(50% 0% 50% 0%);
-  }
+	from {
+		clip-path: inset(0% 0% 0% 0%);
+	}
+	to {
+		clip-path: inset(50% 0% 50% 0%);
+	}
 }
 
 @keyframes iconFade {
-  to {
-    opacity: 0;
-    transform: translateY(12px) scale(0.9);
-  }
+	to {
+		opacity: 0;
+		transform: translateY(12px) scale(0.9);
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .overlay[data-hidden='true'] .bg,
-  .overlay[data-hidden='true'] .icon {
-    opacity: 0;
-    animation: none;
-  }
+	.overlay[data-hidden="true"] .bg,
+	.overlay[data-hidden="true"] .icon {
+		opacity: 0;
+		animation: none;
+	}
 }

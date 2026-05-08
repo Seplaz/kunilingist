@@ -1,57 +1,57 @@
 .arrow {
-  position: absolute;
-  bottom: 48px;
-  left: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  padding: 0;
-  opacity: 0;
-  background: none;
-  transform: translateX(-50%) translateY(-14px) scale(0.9);
-  cursor: pointer;
+	position: absolute;
+	bottom: 48px;
+	left: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	padding: 0;
+	opacity: 0;
+	background: none;
+	transform: translateX(-50%) translateY(-14px) scale(0.9);
+	cursor: pointer;
 }
 
 .arrow img {
-  inline-size: 32px;
-  block-size: 41px;
+	inline-size: 32px;
+	block-size: 41px;
 }
 
-.arrow[data-active='true'] {
-  animation:
-    arrowRise 500ms var(--ease-primary) forwards,
-    arrowBounce 2s ease-in-out infinite 2s;
-  animation-delay:
-    var(--arrow-delay, 1200ms),
-    calc(var(--arrow-delay, 1200ms) + 600ms);
+.arrow[data-active="true"] {
+	animation:
+		arrowRise 500ms var(--ease-primary) forwards,
+		arrowBounce 2s ease-in-out infinite 2s;
+	animation-delay:
+		var(--arrow-delay, 1200ms), calc(var(--arrow-delay, 1200ms) + 600ms);
 }
 
 @keyframes arrowRise {
-  to {
-    opacity: 0.8;
-    transform: translateX(-50%) translateY(0) scale(1);
-  }
+	to {
+		opacity: 0.8;
+		transform: translateX(-50%) translateY(0) scale(1);
+	}
 }
 
 @keyframes arrowBounce {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(6px);
-  }
+	0%,
+	100% {
+		transform: translateX(-50%) translateY(0);
+	}
+	50% {
+		transform: translateX(-50%) translateY(6px);
+	}
 }
 
 .arrow:focus-visible {
-  outline: 2px solid #f2ece6;
-  outline-offset: 4px;
+	outline: 2px solid #f2ece6;
+	outline-offset: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .arrow {
-    opacity: 0.8;
-    transform: translateX(-50%);
-    animation: none !important;
-  }
+	.arrow {
+		opacity: 0.8;
+		transform: translateX(-50%);
+		animation: none !important;
+	}
 }

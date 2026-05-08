@@ -1,69 +1,69 @@
 .button {
-  display: inline-flex;
-  justify-self: center;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  box-sizing: border-box;
-  border-radius: 16px;
-  padding: 16px 32px;
-  opacity: 0;
-  color: #0b0c0f;
-  font-weight: 700;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  background: rgba(242, 236, 230, 0.8);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transition:
-    opacity 200ms ease,
-    transform 200ms ease,
-    background-color 200ms ease;
-  transform: translateY(14px) scale(0.95);
-  cursor: pointer;
-  inline-size: 100%;
-  max-inline-size: 332px;
+	display: inline-flex;
+	justify-self: center;
+	justify-content: center;
+	align-items: center;
+	align-self: center;
+	box-sizing: border-box;
+	border-radius: 16px;
+	padding: 16px 32px;
+	opacity: 0;
+	color: #0b0c0f;
+	font-weight: 700;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	background: rgba(242, 236, 230, 0.8);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	transition:
+		opacity 200ms ease,
+		transform 200ms ease,
+		background-color 200ms ease;
+	transform: translateY(14px) scale(0.95);
+	cursor: pointer;
+	inline-size: 100%;
+	max-inline-size: 332px;
 }
 
 .button:hover {
-  background-color: #f2ece6;
+	background-color: #f2ece6;
 }
 
 .button:active {
-  transform: translateY(0) scale(0.95);
+	transform: translateY(0) scale(0.95);
 }
 
-.button[data-active='true'] {
-  animation: buttonRise 500ms var(--ease-primary) forwards;
-  animation-delay: var(--d, 0ms);
+.button[data-active="true"] {
+	animation: buttonRise 500ms var(--ease-primary) forwards;
+	animation-delay: var(--d, 0ms);
 }
 
 @keyframes buttonRise {
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .button {
-    opacity: 1;
-    transition: none;
-    transform: none;
-    animation: none !important;
-  }
+	.button {
+		opacity: 1;
+		transition: none;
+		transform: none;
+		animation: none !important;
+	}
 }
 
 @media (min-width: 768px) {
-  .button {
-    align-self: start;
-  }
+	.button {
+		align-self: start;
+	}
 }
 
 @media (min-width: 1024px) {
-  .button {
-    align-self: start;
-  }
+	.button {
+		align-self: start;
+	}
 }

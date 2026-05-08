@@ -1,257 +1,265 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-inline: auto;
-  inline-size: 100%;
-  max-inline-size: 321px;
-  min-inline-size: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-inline: auto;
+	inline-size: 100%;
+	max-inline-size: 321px;
+	min-inline-size: 0;
 }
 
 /* ================= COVER ================= */
 
 .coverWrapper {
-  position: relative;
+	position: relative;
 
-  inline-size: min(321px, 100%, 48vmin, max(96px, calc(100dvb - 500px)));
-  aspect-ratio: 1;
+	inline-size: min(321px, 100%, 48vmin, max(96px, calc(100dvb - 500px)));
+	aspect-ratio: 1;
 
-  opacity: 0;
-  transform: translateY(14px);
+	opacity: 0;
+	transform: translateY(14px);
 }
 
 .cover {
-  display: block;
-  width: 100%;
-  height: 100%;
+	display: block;
+	width: 100%;
+	height: 100%;
 
-  border-radius: 16px;
-  object-fit: cover;
+	border-radius: 16px;
+	object-fit: cover;
 }
 
 .coverWrapper::after {
-  content: '';
-  position: absolute;
-  inset: 0;
+	content: "";
+	position: absolute;
+	inset: 0;
 
-  border-radius: 16px;
-  box-shadow: 0 0 24px #c41512;
+	border-radius: 16px;
+	box-shadow: 0 0 24px #c41512;
 
-  opacity: 0;
-  pointer-events: none;
+	opacity: 0;
+	pointer-events: none;
 }
 
-[data-active='true'] .coverWrapper {
-  animation: coverRise 500ms var(--ease-primary) forwards;
-  animation-delay: var(--cover-delay, 0ms);
+[data-active="true"] .coverWrapper {
+	animation: coverRise 500ms var(--ease-primary) forwards;
+	animation-delay: var(--cover-delay, 0ms);
 }
 
-[data-active='true'] .coverWrapper::after {
-  animation:
-    glowFadeIn 500ms var(--ease-primary) forwards,
-    glowPulse 3s ease-in-out infinite;
-  animation-delay:
-    var(--cover-delay, 0ms),
-    calc(var(--cover-delay, 0ms) + 500ms);
+[data-active="true"] .coverWrapper::after {
+	animation:
+		glowFadeIn 500ms var(--ease-primary) forwards,
+		glowPulse 3s ease-in-out infinite;
+	animation-delay:
+		var(--cover-delay, 0ms), calc(var(--cover-delay, 0ms) + 500ms);
 }
 
 @keyframes coverRise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(14px);
+	}
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 @keyframes glowFadeIn {
-  from { opacity: 0; }
-  to { opacity: 0.8; }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 0.8;
+	}
 }
 
 @keyframes glowPulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+	0%,
+	100% {
+		opacity: 0.6;
+	}
+	50% {
+		opacity: 1;
+	}
 }
 
 /* ================= BAR ================= */
 
 .bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
-  margin-block-start: 16px;
-  border-radius: 16px;
-  padding: 16px 32px;
+	margin-block-start: 16px;
+	border-radius: 16px;
+	padding: 16px 32px;
 
-  opacity: 0;
-  background: rgba(242, 236, 230, 0.8);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+	opacity: 0;
+	background: rgba(242, 236, 230, 0.8);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
 
-  transform: translateY(14px);
+	transform: translateY(14px);
 
-  inline-size: 100%;
+	inline-size: 100%;
 }
 
-[data-active='true'] .bar {
-  animation: playerRise 500ms var(--ease-primary) forwards;
-  animation-delay: var(--bar-delay, 0ms);
+[data-active="true"] .bar {
+	animation: playerRise 500ms var(--ease-primary) forwards;
+	animation-delay: var(--bar-delay, 0ms);
 }
 
 /* ================= PROGRESS ================= */
 
 .progressTrack {
-  position: relative;
+	position: relative;
 
-  margin-block-start: 8px;
-  border-radius: 999px;
+	margin-block-start: 8px;
+	border-radius: 999px;
 
-  opacity: 0;
-  background: rgba(242, 236, 230, 0.8);
+	opacity: 0;
+	background: rgba(242, 236, 230, 0.8);
 
-  transform: translateY(14px);
+	transform: translateY(14px);
 
-  cursor: pointer;
-  touch-action: none;
+	cursor: pointer;
+	touch-action: none;
 
-  block-size: 3px;
-  inline-size: 100%;
+	block-size: 3px;
+	inline-size: 100%;
 }
 
-[data-active='true'] .progressTrack {
-  animation: playerRise 500ms var(--ease-primary) forwards;
-  animation-delay: var(--bar-delay, 0ms);
+[data-active="true"] .progressTrack {
+	animation: playerRise 500ms var(--ease-primary) forwards;
+	animation-delay: var(--bar-delay, 0ms);
 }
 
 .progressFill {
-  border-radius: 999px;
-  background: #f2ece6;
-  transition: width 100ms linear;
-  pointer-events: none;
-  block-size: 100%;
+	border-radius: 999px;
+	background: #f2ece6;
+	transition: width 100ms linear;
+	pointer-events: none;
+	block-size: 100%;
 }
 
 /* ================= TEXT ================= */
 
 .info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
 }
 
 .artist {
-  overflow: hidden;
-  color: #0b0c0f;
-  font-weight: 700;
-  font-size: 16px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	overflow: hidden;
+	color: #0b0c0f;
+	font-weight: 700;
+	font-size: 16px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .track {
-  overflow: hidden;
-  color: #0b0c0f;
-  font-weight: 400;
-  font-size: 16px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	overflow: hidden;
+	color: #0b0c0f;
+	font-weight: 400;
+	font-size: 16px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 /* ================= PLAY BUTTON ================= */
 
 .playBtn {
-  position: relative;
-  display: grid;
-  flex-shrink: 0;
-  place-items: center;
+	position: relative;
+	display: grid;
+	flex-shrink: 0;
+	place-items: center;
 
-  border: none;
-  padding: 0;
-  background: none;
+	border: none;
+	padding: 0;
+	background: none;
 
-  cursor: pointer;
+	cursor: pointer;
 
-  inline-size: 16px;
-  block-size: 16px;
+	inline-size: 16px;
+	block-size: 16px;
 }
 
 .playBtn .icon {
-  position: absolute;
-  transition:
-    opacity 150ms ease,
-    transform 150ms ease;
+	position: absolute;
+	transition:
+		opacity 150ms ease,
+		transform 150ms ease;
 
-  inline-size: 16px;
-  block-size: 16px;
+	inline-size: 16px;
+	block-size: 16px;
 }
 
 .playBtn .iconHidden {
-  opacity: 0;
-  transform: scale(0.6);
-  pointer-events: none;
+	opacity: 0;
+	transform: scale(0.6);
+	pointer-events: none;
 }
 
 .playBtn .iconVisible {
-  opacity: 1;
-  transform: scale(1);
+	opacity: 1;
+	transform: scale(1);
 }
 
 /* ================= TIMES ================= */
 
 .times {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 
-  margin-block-start: 4px;
+	margin-block-start: 4px;
 
-  opacity: 0;
-  color: rgba(242, 236, 230, 0.8);
-  font-size: 12px;
+	opacity: 0;
+	color: rgba(242, 236, 230, 0.8);
+	font-size: 12px;
 
-  transform: translateY(14px);
+	transform: translateY(14px);
 
-  inline-size: 100%;
+	inline-size: 100%;
 }
 
-[data-active='true'] .times {
-  animation: playerRise 500ms var(--ease-primary) forwards;
-  animation-delay: var(--bar-delay, 0ms);
+[data-active="true"] .times {
+	animation: playerRise 500ms var(--ease-primary) forwards;
+	animation-delay: var(--bar-delay, 0ms);
 }
 
 /* ================= SHARED RISE ================= */
 
 @keyframes playerRise {
-  from {
-    opacity: 0;
-    transform: translateY(14px) scale(0.9);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(14px) scale(0.9);
+	}
 
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
 }
 
 /* ================= REDUCED MOTION ================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .coverWrapper,
-  .bar,
-  .progressTrack,
-  .times {
-    opacity: 1;
-    transform: none;
-    animation: none !important;
-  }
+	.coverWrapper,
+	.bar,
+	.progressTrack,
+	.times {
+		opacity: 1;
+		transform: none;
+		animation: none !important;
+	}
 
-  .coverWrapper::after {
-    animation: none;
-    opacity: 0.8;
-  }
+	.coverWrapper::after {
+		animation: none;
+		opacity: 0.8;
+	}
 }

@@ -1,37 +1,37 @@
 html,
 body {
-  block-size: 100dvh;
-  overscroll-behavior-y: none;
+	block-size: 100dvh;
+	overscroll-behavior-y: none;
 }
 
 body {
-  overflow: hidden;
-  background-color: #0b0c0f;
+	overflow: hidden;
+	background-color: #0b0c0f;
 }
 
 #root {
-  block-size: 100dvh;
+	block-size: 100dvh;
 }
 
 .scrollContainer {
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  block-size: 100dvh;
-  overscroll-behavior-y: contain;
-  scroll-snap-type: y mandatory;
-  scroll-snap-stop: always;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	scroll-behavior: smooth;
+	block-size: 100dvh;
+	overscroll-behavior-y: contain;
+	scroll-snap-type: y mandatory;
+	scroll-snap-stop: always;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
 }
 
 .scrollContainer::-webkit-scrollbar {
-  inline-size: 0;
-  block-size: 0;
+	inline-size: 0;
+	block-size: 0;
 }
 
 .section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
 }

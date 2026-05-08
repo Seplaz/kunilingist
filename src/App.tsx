@@ -1,121 +1,121 @@
-import './App.css';
+import "./App.css";
 import {
-  lazy,
-  Suspense,
-  useEffect,
-  useRef,
-  useState,
-  useCallback,
-} from 'react';
+	lazy,
+	Suspense,
+	useEffect,
+	useRef,
+	useState,
+	useCallback,
+} from "react";
 
-import { FirstPage } from './pages/FirstPage/FirstPage';
-import { Scroll } from './components/Scroll/Scroll';
-import { Loading } from './components/Loading/Loading';
+import { FirstPage } from "./pages/FirstPage/FirstPage";
+import { Scroll } from "./components/Scroll/Scroll";
+import { Loading } from "./components/Loading/Loading";
 
 const SecondPage = lazy(() =>
-  import('./pages/SecondPage/SecondPage').then((module) => ({
-    default: module.SecondPage,
-  })),
+	import("./pages/SecondPage/SecondPage").then((module) => ({
+		default: module.SecondPage,
+	})),
 );
 
 const ThirdPage = lazy(() =>
-  import('./pages/ThirdPage/ThirdPage').then((module) => ({
-    default: module.ThirdPage,
-  })),
+	import("./pages/ThirdPage/ThirdPage").then((module) => ({
+		default: module.ThirdPage,
+	})),
 );
 
 export default function App() {
-  const containerRef = useRef<HTMLDivElement>(null);
+	const containerRef = useRef<HTMLDivElement>(null);
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [loadingDone, setLoadingDone] = useState(false);
+	const [activeIndex, setActiveIndex] = useState(0);
+	const [loadingDone, setLoadingDone] = useState(false);
 
-  const pages = [FirstPage, SecondPage, ThirdPage];
-  const pagesCount = pages.length;
+	const pages = [FirstPage, SecondPage, ThirdPage];
+	const pagesCount = pages.length;
 
-  /* ---------------- Scroll Tracking ---------------- */
+	/* ---------------- Scroll Tracking ---------------- */
 
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
+	useEffect(() => {
+		const el = containerRef.current;
+		if (!el) return;
 
-    let raf = 0;
+		let raf = 0;
 
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
+		const onScroll = () => {
+			cancelAnimationFrame(raf);
 
-      raf = requestAnimationFrame(() => {
-        const h = el.clientHeight || 1;
+			raf = requestAnimationFrame(() => {
+				const h = el.clientHeight || 1;
 
-        const next = Math.floor((el.scrollTop + h / 6) / h);
+				const next = Math.floor((el.scrollTop + h / 6) / h);
 
-        const safeIndex = Math.max(0, Math.min(next, pagesCount - 1));
+				const safeIndex = Math.max(0, Math.min(next, pagesCount - 1));
 
-        setActiveIndex(safeIndex);
-      });
-    };
+				setActiveIndex(safeIndex);
+			});
+		};
 
-    onScroll();
-    el.addEventListener('scroll', onScroll, { passive: true });
+		onScroll();
+		el.addEventListener("scroll", onScroll, { passive: true });
 
-    return () => {
-      cancelAnimationFrame(raf);
-      el.removeEventListener('scroll', onScroll);
-    };
-  }, [pagesCount]);
+		return () => {
+			cancelAnimationFrame(raf);
+			el.removeEventListener("scroll", onScroll);
+		};
+	}, [pagesCount]);
 
-  /* ---------------- Scroll To Index ---------------- */
+	/* ---------------- Scroll To Index ---------------- */
 
-  const scrollToIndex = useCallback(
-    (index: number) => {
-      const el = containerRef.current;
-      if (!el) return;
+	const scrollToIndex = useCallback(
+		(index: number) => {
+			const el = containerRef.current;
+			if (!el) return;
 
-      const safeIndex = Math.max(0, Math.min(index, pagesCount - 1));
-      const h = el.clientHeight;
+			const safeIndex = Math.max(0, Math.min(index, pagesCount - 1));
+			const h = el.clientHeight;
 
-      el.scrollTo({
-        top: h * safeIndex,
-        behavior: 'smooth',
-      });
-    },
-    [pagesCount],
-  );
+			el.scrollTo({
+				top: h * safeIndex,
+				behavior: "smooth",
+			});
+		},
+		[pagesCount],
+	);
 
-  /* ---------------- Render ---------------- */
+	/* ---------------- Render ---------------- */
 
-  return (
-    <>
-      {!loadingDone && (
-        <Loading
-          preloadImages={['/images/pages/page_1/background.webp']}
-          onFinished={() => setLoadingDone(true)}
-        />
-      )}
+	return (
+		<>
+			{!loadingDone && (
+				<Loading
+					preloadImages={["/images/pages/page_1/background.webp"]}
+					onFinished={() => setLoadingDone(true)}
+				/>
+			)}
 
-      <div className="scrollContainer" ref={containerRef}>
-        <Suspense fallback={<Loading />}>
-          {pages.map((Page, i) => {
-            const isActive = i === activeIndex && (i !== 0 || loadingDone);
-            const hasNext = i < pagesCount - 1;
+			<div className="scrollContainer" ref={containerRef}>
+				<Suspense fallback={<Loading />}>
+					{pages.map((Page, i) => {
+						const isActive = i === activeIndex && (i !== 0 || loadingDone);
+						const hasNext = i < pagesCount - 1;
 
-            return (
-              <div key={i} className="section">
-                <Page
-                  active={isActive}
-                  onNext={hasNext ? () => scrollToIndex(i + 1) : undefined}
-                />
-              </div>
-            );
-          })}
-        </Suspense>
+						return (
+							<div key={i} className="section">
+								<Page
+									active={isActive}
+									onNext={hasNext ? () => scrollToIndex(i + 1) : undefined}
+								/>
+							</div>
+						);
+					})}
+				</Suspense>
 
-        <Scroll
-          count={pagesCount}
-          activeIndex={activeIndex}
-          onSelect={scrollToIndex}
-        />
-      </div>
-    </>
-  );
+				<Scroll
+					count={pagesCount}
+					activeIndex={activeIndex}
+					onSelect={scrollToIndex}
+				/>
+			</div>
+		</>
+	);
 }

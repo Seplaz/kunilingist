@@ -1,52 +1,52 @@
 .iconWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  opacity: 0;
-  text-decoration: none;
-  transition:
-    transform 200ms ease,
-    scale 200ms ease;
-  transform: translateY(14px);
-  cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	opacity: 0;
+	text-decoration: none;
+	transition:
+		transform 200ms ease,
+		scale 200ms ease;
+	transform: translateY(14px);
+	cursor: pointer;
 }
 
 .iconWrapper:active {
-  scale: 0.95;
+	scale: 0.95;
 }
 
-.iconWrapper[data-active='true'] {
-  animation: iconRise 500ms var(--ease-primary) forwards;
-  animation-delay: var(--icon-delay, 0ms);
+.iconWrapper[data-active="true"] {
+	animation: iconRise 500ms var(--ease-primary) forwards;
+	animation-delay: var(--icon-delay, 0ms);
 }
 
 @keyframes iconRise {
-  from {
-    scale: 0.8;
-  }
+	from {
+		scale: 0.8;
+	}
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    scale: 1;
-  }
+	to {
+		opacity: 1;
+		transform: translateY(0);
+		scale: 1;
+	}
 }
 
 .iconImage {
-  display: block;
-  inline-size: clamp(20px, 3.2vw, 32px);
-  aspect-ratio: 1;
+	display: block;
+	inline-size: clamp(20px, 3.2vw, 32px);
+	aspect-ratio: 1;
 }
 
 .iconText {
-  font-size: 16px;
+	font-size: 16px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .iconWrapper {
-    opacity: 1;
-    transform: none;
-    animation: none !important;
-  }
+	.iconWrapper {
+		opacity: 1;
+		transform: none;
+		animation: none !important;
+	}
 }

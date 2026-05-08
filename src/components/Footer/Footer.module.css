@@ -1,21 +1,21 @@
 .footer {
-  padding: 30px 20px;
-  color: #f2ece6;
-  background-color: #0b0c0f;
+	padding: 30px 20px;
+	color: #f2ece6;
+	background-color: #0b0c0f;
 }
 
 .footer__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
 }
 
 .footer__text {
-  font-weight: 700;
-  font-size: clamp(12px, calc(10.6px + 0.375vw), 16px);
+	font-weight: 700;
+	font-size: clamp(12px, calc(10.6px + 0.375vw), 16px);
 }
 
 .footer__icons {
-  display: flex;
-  gap: 4px;
+	display: flex;
+	gap: 4px;
 }
