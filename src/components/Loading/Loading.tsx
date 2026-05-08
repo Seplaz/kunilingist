@@ -8,59 +8,78 @@ type Props = {
   onFinished?: () => void;
 };
 
-export const Loading = ({ minDurationMs = 600, preloadImages = [], onFinished }: Props) => {
+export const Loading = ({
+  minDurationMs = 600,
+  preloadImages = [],
+  onFinished,
+}: Props) => {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
+    let cancelled = false;
+    let timeoutId: number | undefined;
+
     const startedAt = performance.now();
 
     const finish = () => {
       const elapsed = performance.now() - startedAt;
       const rest = Math.max(0, minDurationMs - elapsed);
-      window.setTimeout(() => setHidden(true), rest);
+
+      timeoutId = window.setTimeout(() => {
+        if (!cancelled) {
+          setHidden(true);
+        }
+      }, rest);
     };
 
-    const preload = () => {
+    const preload = async () => {
       if (preloadImages.length === 0) {
         finish();
         return;
       }
-      let loaded = 0;
-      preloadImages.forEach((src) => {
-        const img = new Image();
-        img.onload = img.onerror = () => {
-          loaded += 1;
-          if (loaded === preloadImages.length) finish();
-        };
-        img.src = src;
-      });
+
+      await Promise.all(
+        preloadImages.map(
+          (src) =>
+            new Promise<void>((resolve) => {
+              const img = new Image();
+              img.onload = img.onerror = () => resolve();
+              img.src = src;
+            }),
+        ),
+      );
+
+      finish();
     };
 
     if (document.readyState === 'complete') {
       preload();
-      return;
+    } else {
+      window.addEventListener('load', preload, { once: true });
     }
 
-    window.addEventListener('load', preload, { once: true });
-    return () => window.removeEventListener('load', preload);
+    return () => {
+      cancelled = true;
+      if (timeoutId) clearTimeout(timeoutId);
+      window.removeEventListener('load', preload);
+    };
   }, [minDurationMs, preloadImages]);
 
   return (
     <div
       className={styles.overlay}
-      data-hidden={hidden ? 'true' : 'false'}
-      aria-hidden="true"
+      data-hidden={hidden}
+      role='status'
+      aria-live='polite'
+      aria-busy={!hidden}
     >
-      <div className={styles.bg} />
-      <img
-        src={loading}
-        alt="Загрузка..."
-        className={styles.icon}
+      <div
+        className={styles.bg}
         onAnimationEnd={() => {
           if (hidden) onFinished?.();
         }}
       />
+      <img src={loading} alt='Загрузка...' className={styles.icon} />
     </div>
   );
 };
-
