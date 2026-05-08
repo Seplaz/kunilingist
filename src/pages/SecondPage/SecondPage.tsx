@@ -9,39 +9,52 @@ type Props = { active: boolean };
 
 export const SecondPage = ({ active }: Props) => {
   const baseDelayMs = 200;
+
   const title = 'НОВЫЙ СИНГЛ';
   const wordsCount = title.trim().split(/\s+/).filter(Boolean).length;
-  const subtitleDelayMs = baseDelayMs + (wordsCount - 1) * 250 + 250;
-  const subtitle2DelayMs = subtitleDelayMs + 250;
-  const barDelayMs = subtitle2DelayMs + 500 + 250;
-  const coverDelayMs = barDelayMs - 250;
-  const arrowDelayMs = barDelayMs + 500 + 150;
+
+  const wordStepMs = 250;
+  const blockStepMs = 250;
+  const sectionGapMs = 500;
+
+  const subtitleDelayMs =
+    baseDelayMs + (wordsCount - 1) * wordStepMs + blockStepMs;
+
+  const subtitle2DelayMs = subtitleDelayMs + blockStepMs;
+
+  const playerBarDelayMs = subtitle2DelayMs + sectionGapMs + blockStepMs;
+  const playerCoverDelayMs = playerBarDelayMs - blockStepMs;
+
+  const arrowDelayMs = playerBarDelayMs + sectionGapMs + 150;
 
   return (
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <Header />
+
       <div className={styles.content}>
         <div className={styles.text}>
           <Title title={title} baseDelayMs={baseDelayMs} />
+
           <Subtitle subtitle='2026 — Труповозка' delayMs={subtitleDelayMs} />
+
           <Subtitle
             subtitle='Саундтрек для общей деградации'
             delayMs={subtitle2DelayMs}
           />
         </div>
+
         <Player
-          barDelayMs={barDelayMs}
-          coverDelayMs={coverDelayMs}
+          barDelayMs={playerBarDelayMs}
+          coverDelayMs={playerCoverDelayMs}
           active={active}
         />
       </div>
+
       <img
         className={styles.arrow}
         src={arrowDown}
         alt='Вниз'
-        style={
-          { '--arrow-delay': `${arrowDelayMs}ms` } as React.CSSProperties
-        }
+        style={{ '--arrow-delay': `${arrowDelayMs}ms` } as React.CSSProperties}
       />
     </div>
   );

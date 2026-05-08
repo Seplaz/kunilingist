@@ -1,15 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import styles from "./Player.module.css";
-import play from "/icons/play.svg";
-import pause from "/icons/pause.svg";
-import audio from "/audio/КУНИЛИНГИСТ — Труповозка.mp3";
-import video_cover_webm from "/videos/video_cover.webm";
+import { useEffect, useRef, useState } from 'react';
+import styles from './Player.module.css';
+import play from '/icons/play.svg';
+import pause from '/icons/pause.svg';
+import audio from '/audio/КУНИЛИНГИСТ — Труповозка.mp3';
+import video_cover_webm from '/videos/video_cover.webm';
 
 const AUDIO_SRC = audio;
 
 type CSSVars = React.CSSProperties & {
-  ["--bar-delay"]?: string;
-  ["--cover-delay"]?: string;
+  ['--bar-delay']?: string;
+  ['--cover-delay']?: string;
 };
 
 type Props = {
@@ -21,7 +21,7 @@ type Props = {
 function formatTime(s: number): string {
   const m = Math.floor(s / 60);
   const sec = Math.floor(s % 60);
-  return `${m}:${sec.toString().padStart(2, "0")}`;
+  return `${m}:${sec.toString().padStart(2, '0')}`;
 }
 
 export const Player = ({
@@ -39,6 +39,8 @@ export const Player = ({
     const audio = audioRef.current;
     if (!audio) return;
 
+    audio.load();
+
     const onTimeUpdate = () => {
       setCurrentTime(audio.currentTime);
       setProgress(audio.duration ? audio.currentTime / audio.duration : 0);
@@ -46,13 +48,13 @@ export const Player = ({
     const onLoadedMetadata = () => setDuration(audio.duration);
     const onEnded = () => setPlaying(false);
 
-    audio.addEventListener("timeupdate", onTimeUpdate);
-    audio.addEventListener("loadedmetadata", onLoadedMetadata);
-    audio.addEventListener("ended", onEnded);
+    audio.addEventListener('timeupdate', onTimeUpdate);
+    audio.addEventListener('loadedmetadata', onLoadedMetadata);
+    audio.addEventListener('ended', onEnded);
     return () => {
-      audio.removeEventListener("timeupdate", onTimeUpdate);
-      audio.removeEventListener("loadedmetadata", onLoadedMetadata);
-      audio.removeEventListener("ended", onEnded);
+      audio.removeEventListener('timeupdate', onTimeUpdate);
+      audio.removeEventListener('loadedmetadata', onLoadedMetadata);
+      audio.removeEventListener('ended', onEnded);
     };
   }, []);
 
@@ -81,18 +83,25 @@ export const Player = ({
   return (
     <div
       className={styles.wrapper}
-      data-active={active ? "true" : "false"}
+      data-active={active ? 'true' : 'false'}
       style={
         {
-          "--bar-delay": `${barDelayMs}ms`,
-          "--cover-delay": `${coverDelayMs}ms`,
+          '--bar-delay': `${barDelayMs}ms`,
+          '--cover-delay': `${coverDelayMs}ms`,
         } as CSSVars
       }
     >
-      <audio ref={audioRef} src={AUDIO_SRC} preload="metadata" />
+      <audio ref={audioRef} src={AUDIO_SRC} preload='metadata' />
 
       {active && (
-        <video autoPlay muted loop playsInline src={video_cover_webm} className={styles.cover} />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          src={video_cover_webm}
+          className={styles.cover}
+        />
       )}
 
       <div className={styles.bar}>
@@ -104,16 +113,16 @@ export const Player = ({
         <button
           className={styles.playBtn}
           onClick={togglePlay}
-          aria-label={playing ? "Пауза" : "Воспроизвести"}
+          aria-label={playing ? 'Пауза' : 'Воспроизвести'}
         >
           <img
             src={play}
-            alt="Воспроизвести"
+            alt='Воспроизвести'
             className={`${styles.icon} ${playing ? styles.iconHidden : styles.iconVisible}`}
           />
           <img
             src={pause}
-            alt="Пауза"
+            alt='Пауза'
             className={`${styles.icon} ${playing ? styles.iconVisible : styles.iconHidden}`}
           />
         </button>
@@ -122,8 +131,8 @@ export const Player = ({
       <div
         className={styles.progressTrack}
         onPointerDown={seek}
-        role="slider"
-        aria-label="Прогресс"
+        role='slider'
+        aria-label='Прогресс'
         aria-valuenow={Math.round(currentTime)}
         aria-valuemin={0}
         aria-valuemax={Math.round(duration)}
@@ -136,7 +145,7 @@ export const Player = ({
 
       <div className={styles.times}>
         <span>{formatTime(currentTime)}</span>
-        <span>{duration ? formatTime(duration) : "--:--"}</span>
+        <span>{duration ? formatTime(duration) : '--:--'}</span>
       </div>
     </div>
   );

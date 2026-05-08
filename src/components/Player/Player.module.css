@@ -64,13 +64,13 @@
 
 @keyframes playerRise {
   from {
-    scale: 0.9;
+    opacity: 0;
+    transform: translateY(14px) scale(0.9);
   }
 
   to {
-    scale: 1;
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
