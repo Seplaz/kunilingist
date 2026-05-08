@@ -100,12 +100,14 @@ export const ThirdPage = ({ active }: Props) => {
           </div>
         </div>
 
-        <div className={styles.social_container}>
-          <JoinButton
+        <JoinButton
             href='https://t.me/+a0uKxz6TsexmM2Uy'
             delayMs={joinDelayMs}
             active={active}
           />
+
+        <div className={styles.social_container}>
+
 
           <div className={styles.icons}>
             {socialIcons.map((item, index) => (

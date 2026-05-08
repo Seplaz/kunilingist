@@ -2,6 +2,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  justify-self: center;
   align-self: center;
   box-sizing: border-box;
   inline-size: 100%;

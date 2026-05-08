@@ -30,10 +30,14 @@ export const Player = ({
   active = false,
 }: Props) => {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+
+  /* ---------------- AUDIO ---------------- */
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -45,12 +49,14 @@ export const Player = ({
       setCurrentTime(audio.currentTime);
       setProgress(audio.duration ? audio.currentTime / audio.duration : 0);
     };
+
     const onLoadedMetadata = () => setDuration(audio.duration);
     const onEnded = () => setPlaying(false);
 
     audio.addEventListener('timeupdate', onTimeUpdate);
     audio.addEventListener('loadedmetadata', onLoadedMetadata);
     audio.addEventListener('ended', onEnded);
+
     return () => {
       audio.removeEventListener('timeupdate', onTimeUpdate);
       audio.removeEventListener('loadedmetadata', onLoadedMetadata);
@@ -61,24 +67,83 @@ export const Player = ({
   const togglePlay = () => {
     const audio = audioRef.current;
     if (!audio) return;
+
     if (playing) {
       audio.pause();
     } else {
       audio.play();
     }
+
     setPlaying((p) => !p);
   };
 
   const seek = (e: React.PointerEvent<HTMLDivElement>) => {
     const audio = audioRef.current;
     if (!audio || !audio.duration) return;
+
     const rect = e.currentTarget.getBoundingClientRect();
     const ratio = Math.max(
       0,
       Math.min(1, (e.clientX - rect.left) / rect.width),
     );
+
     audio.currentTime = ratio * audio.duration;
   };
+
+  /* ---------------- VIDEO REFLOW FIX ---------------- */
+
+  useEffect(() => {
+    const forceReflow = () => {
+      const video = videoRef.current;
+      if (!video) return;
+
+      // 🔥 Самый стабильный способ
+      const wasPlaying = !video.paused;
+
+      video.style.display = 'none';
+      // force layout
+      void video.offsetHeight;
+      video.style.display = '';
+
+      // перезапуск видео если нужно
+      if (wasPlaying) {
+        video.play().catch(() => {});
+      }
+    };
+
+    const handleVisibility = () => {
+      if (!document.hidden) {
+        // небольшой таймаут даёт браузеру пересчитать viewport
+        setTimeout(forceReflow, 50);
+      }
+    };
+
+    const handleResize = () => {
+      forceReflow();
+    };
+
+    const handlePageShow = () => {
+      forceReflow();
+    };
+
+    const handleFocus = () => {
+      forceReflow();
+    };
+
+    document.addEventListener('visibilitychange', handleVisibility);
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('pageshow', handlePageShow);
+    window.addEventListener('focus', handleFocus);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('pageshow', handlePageShow);
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, []);
+
+  /* ---------------- RENDER ---------------- */
 
   return (
     <div
@@ -91,10 +156,11 @@ export const Player = ({
         } as CSSVars
       }
     >
-      <audio ref={audioRef} src={AUDIO_SRC} preload='metadata' />
+      <audio ref={audioRef} src={AUDIO_SRC} preload="metadata" />
 
       {active && (
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
@@ -117,13 +183,17 @@ export const Player = ({
         >
           <img
             src={play}
-            alt='Воспроизвести'
-            className={`${styles.icon} ${playing ? styles.iconHidden : styles.iconVisible}`}
+            alt="Воспроизвести"
+            className={`${styles.icon} ${
+              playing ? styles.iconHidden : styles.iconVisible
+            }`}
           />
           <img
             src={pause}
-            alt='Пауза'
-            className={`${styles.icon} ${playing ? styles.iconVisible : styles.iconHidden}`}
+            alt="Пауза"
+            className={`${styles.icon} ${
+              playing ? styles.iconVisible : styles.iconHidden
+            }`}
           />
         </button>
       </div>
@@ -131,8 +201,8 @@ export const Player = ({
       <div
         className={styles.progressTrack}
         onPointerDown={seek}
-        role='slider'
-        aria-label='Прогресс'
+        role="slider"
+        aria-label="Прогресс"
         aria-valuenow={Math.round(currentTime)}
         aria-valuemin={0}
         aria-valuemax={Math.round(duration)}
