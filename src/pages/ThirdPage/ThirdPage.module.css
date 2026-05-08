@@ -17,7 +17,7 @@
   display: grid;
   flex: 1 1 auto;
   grid-template-columns: 1fr;
-  grid-template-rows: min-content 2fr min-content;
+  grid-template-rows: min-content 1fr min-content;
   gap: clamp(16px, 3.2vw, 32px);
   padding: 48px clamp(52px, 6.8vw, 108px) 0 clamp(20px, 5.5vw, 48px);
   min-block-size: 0;
@@ -29,11 +29,11 @@
   gap: clamp(16px, 3.2vw, 32px);
 }
 
-.merchColumn {
+.merch_container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: clamp(16px, 3.2vw, 32px);
+  align-items: center;
 }
 
 .merch {
@@ -43,8 +43,16 @@
   gap: clamp(16px, 3.2vw, 32px);
 }
 
-.joinSlot {
-  display: block;
+.social_container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 3.2vw, 32px);
+  padding: 0 0 48px 0;
+}
+
+.button_container {
+  align-self: center;
+  max-inline-size: 332px;
 }
 
 [data-page='third'] .word:nth-child(1) {
@@ -60,7 +68,6 @@
   justify-content: space-evenly;
   align-items: center;
   gap: 16px;
-  padding-block: 32px;
 }
 
 @media (min-width: 768px) {
@@ -68,7 +75,7 @@
     background-image: url('/images/pages/page_3/background_3_tablet.png');
   }
 
-  .merchColumn {
+  .merch_container {
     align-items: center;
     inline-size: 100%;
   }
@@ -77,21 +84,26 @@
     justify-content: center;
   }
 
-  .joinSlot {
-    display: flex;
-    justify-content: center;
-    inline-size: 100%;
-  }
-
   .icons {
     justify-content: space-between;
     align-items: end;
-    padding-block-end: 48px;
+    padding: 0;
   }
 }
 
 @media (min-width: 1024px) {
   .page {
     background-image: url('/images/pages/page_3/background_3_desktop.png');
+  }
+
+  .social_container {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 3.2vw, 48px);
+    padding: 0 0 48px 0;
+  }
+
+  .icons {
+    padding: 0;
   }
 }

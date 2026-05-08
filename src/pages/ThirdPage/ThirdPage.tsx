@@ -49,7 +49,7 @@ export const ThirdPage = ({ active }: Props) => {
             delayMs={subtitleDelayMs}
           />
         </div>
-        <div className={styles.merchColumn}>
+        <div className={styles.merch_container}>
           <div className={styles.merch}>
             <MerchItem
               image={merch1}
@@ -64,55 +64,57 @@ export const ThirdPage = ({ active }: Props) => {
               active={active}
             />
           </div>
-          <div className={styles.joinSlot}>
+        </div>
+        <div className={styles.social_container}>
+          <div className={styles.button_container}>
             <JoinButton
               href='https://t.me/+a0uKxz6TsexmM2Uy'
               delayMs={joinDelayMs}
               active={active}
             />
           </div>
-        </div>
-        <div className={styles.icons}>
-          <Icon
-            icon={telegram}
-            alt='Телеграм'
-            href='https://t.me/+a0uKxz6TsexmM2Uy'
-            target='_blank'
-            delayMs={iconTelegramDelayMs}
-            active={active}
-          />
-          <Icon
-            icon={instagram}
-            alt='Инстаграм'
-            href='https://www.instagram.com/kunilingist?igsh=MTdxdzdjdGxzbHhzbA%3D%3D&utm_source=qr'
-            target='_blank'
-            delayMs={iconInstagramDelayMs}
-            active={active}
-          />
-          <Icon
-            icon={spotify}
-            alt='Spotify'
-            // href='https://www.instagram.com/kunilingist?igsh=MTdxdzdjdGxzbHhzbA%3D%3D&utm_source=qr'
-            target='_blank'
-            delayMs={iconSpotifyDelayMs}
-            active={active}
-          />
-          <Icon
-            icon={yandex}
-            alt='Yandex Music'
-            // href='https://www.instagram.com/kunilingist?igsh=MTdxdzdjdGxzbHhzbA%3D%3D&utm_source=qr'
-            target='_blank'
-            delayMs={iconYandexDelayMs}
-            active={active}
-          />
-          <Icon
-            icon={apple}
-            alt='Apple Music'
-            // href='https://www.instagram.com/kunilingist?igsh=MTdxdzdjdGxzbHhzbA%3D%3D&utm_source=qr'
-            target='_blank'
-            delayMs={iconAppleDelayMs}
-            active={active}
-          />
+          <div className={styles.icons}>
+            <Icon
+              icon={telegram}
+              alt='Телеграм'
+              href='https://t.me/+a0uKxz6TsexmM2Uy'
+              target='_blank'
+              delayMs={iconTelegramDelayMs}
+              active={active}
+            />
+            <Icon
+              icon={instagram}
+              alt='Инстаграм'
+              href='https://www.instagram.com/kunilingist?igsh=MTdxdzdjdGxzbHhzbA%3D%3D&utm_source=qr'
+              target='_blank'
+              delayMs={iconInstagramDelayMs}
+              active={active}
+            />
+            <Icon
+              icon={spotify}
+              alt='Spotify'
+              // href='https://www.instagram.com/kunilingist?igsh=MTdxdzdjdGxzbHhzbA%3D%3D&utm_source=qr'
+              target='_blank'
+              delayMs={iconSpotifyDelayMs}
+              active={active}
+            />
+            <Icon
+              icon={yandex}
+              alt='Yandex Music'
+              // href='https://www.instagram.com/kunilingist?igsh=MTdxdzdjdGxzbHhzbA%3D%3D&utm_source=qr'
+              target='_blank'
+              delayMs={iconYandexDelayMs}
+              active={active}
+            />
+            <Icon
+              icon={apple}
+              alt='Apple Music'
+              // href='https://www.instagram.com/kunilingist?igsh=MTdxdzdjdGxzbHhzbA%3D%3D&utm_source=qr'
+              target='_blank'
+              delayMs={iconAppleDelayMs}
+              active={active}
+            />
+          </div>
         </div>
       </div>
       <Footer />
