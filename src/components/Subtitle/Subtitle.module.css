@@ -1,6 +1,7 @@
 .subtitle {
   opacity: 0;
-  color: #f2ece6;
+  /* color: #f2ece6; */
+  color: rgba(242, 236, 230, 0.85);
   font-weight: 400;
   font-size: clamp(16px, 2.8vw, 24px);
   font-style: italic;
