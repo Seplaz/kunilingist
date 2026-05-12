@@ -1,47 +1,48 @@
 .title {
-	color: #f2ece6;
-	font-weight: 700;
-	font-size: clamp(30px, 5.8vw, 58px);
-	letter-spacing: 2%;
+  color: #f2ece6;
+  font-weight: 700;
+  font-size: clamp(30px, 5.8vw, 58px);
+  letter-spacing: 2%;
+  line-height: 1.1;
 }
 
 .word {
-	display: inline-block;
-	opacity: 0;
-	transform: translateY(14px);
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(14px);
 }
 
 [data-stacked="true"] .word {
-	display: block;
+  display: block;
 }
 
 [data-page="third"][data-stacked="true"] .word:nth-child(1) {
-	display: block;
+  display: block;
 }
 [data-page="third"][data-stacked="true"] .word:nth-child(2),
 [data-page="third"][data-stacked="true"] .word:nth-child(3) {
-	display: inline;
+  display: inline;
 }
 [data-page="third"][data-stacked="true"] .word:nth-child(2)::after {
-	content: " ";
+  content: " ";
 }
 
 [data-active="true"] .word {
-	animation: titleRise 500ms var(--ease-primary) forwards;
-	animation-delay: calc(var(--base, 0ms) + var(--d, 0ms));
+  animation: titleRise 500ms var(--ease-primary) forwards;
+  animation-delay: calc(var(--base, 0ms) + var(--d, 0ms));
 }
 
 @keyframes titleRise {
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.word {
-		opacity: 1;
-		transform: none;
-		animation: none !important;
-	}
+  .word {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
 }
