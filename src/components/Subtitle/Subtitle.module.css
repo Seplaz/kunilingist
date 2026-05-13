@@ -1,7 +1,7 @@
 .subtitle {
   opacity: 0;
   /* color: #f2ece6; */
-  color: rgba(242, 236, 230, 0.85);
+  color: rgba(242, 236, 230, 0.8);
   font-weight: 400;
   font-size: clamp(16px, 2.8vw, 24px);
   font-style: italic;
@@ -9,7 +9,7 @@
   line-height: 1.4;
 }
 
-[data-active="true"] .subtitle {
+[data-active='true'] .subtitle {
   animation: subtitleRise 500ms var(--ease-primary) forwards;
   animation-delay: var(--d, 0ms);
 }

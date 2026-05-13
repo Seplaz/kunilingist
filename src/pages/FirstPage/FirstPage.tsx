@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Header } from "../../components/Header/Header";
-import { ScrollHint } from "../../components/ScrollHint/ScrollHint";
-import { Subtitle } from "../../components/Subtitle/Subtitle";
-import { Title } from "../../components/Title/Title";
-import styles from "./FirstPage.module.css";
+import { useState } from 'react';
+import { Header } from '../../components/Header/Header';
+import { ScrollHint } from '../../components/ScrollHint/ScrollHint';
+import { Subtitle } from '../../components/Subtitle/Subtitle';
+import { Title } from '../../components/Title/Title';
+import styles from './FirstPage.module.css';
 
 type Props = {
   active: boolean;
@@ -12,8 +12,20 @@ type Props = {
 
 const phrases = [
   {
-    title: "ПРЕВОСХОДНОЕ ВЛАДЕНИЕ ЯЗЫКОМ",
-    subtitle: "Искусство, от которого сводит ноги",
+    title: 'ПРЕВОСХОДНОЕ ВЛАДЕНИЕ ЯЗЫКОМ',
+    subtitle: 'Искусство, от которого сводит ноги',
+  },
+  {
+    title: 'ПРЕВОСХОДНОЕ ВЛАДЕНИЕ ЯЗЫКОМ',
+    subtitle: 'Язык — единственный аргумент, после которого не спорят',
+  },
+  {
+    title: 'ПРЕВОСХОДНОЕ ВЛАДЕНИЕ ЯЗЫКОМ',
+    subtitle: 'Религия для тех, кто молится на коленях',
+  },
+  {
+    title: 'ПРЕВОСХОДНОЕ ВЛАДЕНИЕ ЯЗЫКОМ',
+    subtitle: 'Единственный язык, который понимают все',
   },
 ];
 
@@ -37,25 +49,25 @@ export const FirstPage = ({ active, onNext }: Props) => {
   const arrowDelayMs = subtitleDelayMs + sectionGapMs + blockStepMs;
 
   return (
-    <div className={styles.page} data-active={active ? "true" : "false"}>
+    <div className={styles.page} data-active={active ? 'true' : 'false'}>
       <picture>
         <source
-          media="(min-width: 1024px)"
-          srcSet="/images/pages/page_1/background_desktop.webp"
+          media='(min-width: 1024px)'
+          srcSet='/images/pages/page_1/background_desktop.webp'
         />
         <source
-          media="(min-width: 768px)"
-          srcSet="/images/pages/page_1/background_tablet.webp"
+          media='(min-width: 768px)'
+          srcSet='/images/pages/page_1/background_tablet.webp'
         />
         <img
-          src="/images/pages/page_1/background.webp"
-          alt=""
+          src='/images/pages/page_1/background.webp'
+          alt=''
           className={styles.background_image}
-          fetchPriority="high"
-          loading="eager"
-          decoding="async"
-          width="1920"
-          height="1080"
+          fetchPriority='high'
+          loading='eager'
+          decoding='async'
+          width='1920'
+          height='1080'
         />
       </picture>
 
