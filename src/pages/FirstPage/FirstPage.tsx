@@ -13,19 +13,19 @@ type Props = {
 const phrases = [
   {
     title: 'ПРЕВОСХОДНОЕ ВЛАДЕНИЕ ЯЗЫКОМ',
-    subtitle: 'Искусство, от которого сводит ноги',
+    subtitle: ['Искусство, от которого', 'сводит ноги'],
   },
   {
     title: 'ПРЕВОСХОДНОЕ ВЛАДЕНИЕ ЯЗЫКОМ',
-    subtitle: 'Язык — единственный аргумент, после которого не спорят',
+    subtitle: ['Язык — единственный аргумент,', 'после которого не спорят'],
   },
   {
     title: 'ПРЕВОСХОДНОЕ ВЛАДЕНИЕ ЯЗЫКОМ',
-    subtitle: 'Религия для тех, кто молится на коленях',
+    subtitle: ['Религия для тех,', 'кто молится на коленях'],
   },
   {
     title: 'ПРЕВОСХОДНОЕ ВЛАДЕНИЕ ЯЗЫКОМ',
-    subtitle: 'Единственный язык, который понимают все',
+    subtitle: ['Единственный язык,', 'который понимают все'],
   },
 ];
 
@@ -38,15 +38,19 @@ export const FirstPage = ({ active, onNext }: Props) => {
 
   const baseDelayMs = 200;
   const wordStepMs = 250;
+  const lineStepMs = 250;
   const blockStepMs = 250;
   const sectionGapMs = 500;
 
   const wordsCount = phrase.title.trim().split(/\s+/).filter(Boolean).length;
+  const linesCount = phrase.subtitle.length;
 
   const subtitleDelayMs =
     baseDelayMs + (wordsCount - 1) * wordStepMs + blockStepMs;
 
-  const arrowDelayMs = subtitleDelayMs + sectionGapMs + blockStepMs;
+  const subtitleEndMs = subtitleDelayMs + (linesCount - 1) * lineStepMs;
+
+  const arrowDelayMs = subtitleEndMs + sectionGapMs + blockStepMs;
 
   return (
     <div className={styles.page} data-active={active ? 'true' : 'false'}>

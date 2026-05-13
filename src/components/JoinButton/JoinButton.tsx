@@ -1,32 +1,32 @@
-import styles from "./JoinButton.module.css";
+import styles from './JoinButton.module.css';
 
 type CSSVars = React.CSSProperties & {
-	"--d"?: string;
+  '--d'?: string;
 };
 
 type Props = {
-	href: string;
-	label?: string;
-	delayMs?: number;
-	active?: boolean;
+  href: string;
+  label?: string;
+  delayMs?: number;
+  active?: boolean;
 };
 
 export const JoinButton = ({
-	href,
-	label = "Присоединиться",
-	delayMs = 0,
-	active = false,
+  href,
+  label = 'СТАТЬ ЧАСТЬЮ КУЛЬТА',
+  delayMs = 0,
+  active = false,
 }: Props) => {
-	return (
-		<a
-			className={styles.button}
-			data-active={active ? "true" : "false"}
-			style={{ "--d": `${delayMs}ms` } as CSSVars}
-			href={href}
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			{label}
-		</a>
-	);
+  return (
+    <a
+      className={styles.button}
+      data-active={active ? 'true' : 'false'}
+      style={{ '--d': `${delayMs}ms` } as CSSVars}
+      href={href}
+      target='_blank'
+      rel='noopener noreferrer'
+    >
+      {label}
+    </a>
+  );
 };

@@ -1,17 +1,20 @@
 .subtitle {
-  opacity: 0;
-  /* color: #f2ece6; */
   color: rgba(242, 236, 230, 0.8);
   font-weight: 400;
   font-size: clamp(16px, 2.8vw, 24px);
   font-style: italic;
-  transform: translateY(14px);
   line-height: 1.4;
 }
 
-[data-active='true'] .subtitle {
+.line {
+  display: block;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+[data-active='true'] .line {
   animation: subtitleRise 500ms var(--ease-primary) forwards;
-  animation-delay: var(--d, 0ms);
+  animation-delay: calc(var(--base, 0ms) + var(--d, 0ms));
 }
 
 @keyframes subtitleRise {
@@ -22,7 +25,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .subtitle {
+  .line {
     opacity: 1;
     transform: none;
     animation: none !important;

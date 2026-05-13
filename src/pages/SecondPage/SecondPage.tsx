@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Header } from '../../components/Header/Header';
 import { Player } from '../../components/Player/Player';
 import { ScrollHint } from '../../components/ScrollHint/ScrollHint';
@@ -10,45 +11,43 @@ type Props = {
   onNext?: () => void;
 };
 
-const phrases = [
-  {
-    title: 'СООБЩЕСТВО',
-    subtitle: 'Искусство, от которого сводит ноги',
-  },
-  {
-    title: 'СООБЩЕСТВО',
-    subtitle: 'Секта для тех, кому бог уже не перезвонит',
-  },
-  {
-    title: 'СООБЩЕСТВО',
-    subtitle: 'Вход — языком. Выход не предусмотрен',
-  },
-  {
-    title: 'СООБЩЕСТВО',
-    subtitle: 'Добро пожаловать в яму, из которой не хочется вылезать',
-  },
+const title = 'НОВЫЙ СИНГЛ';
+const releaseLine = '2026 — Труповозка';
+
+const phrases: string[][] = [
+  ['Последнее, что ты услышишь', 'в сознании'],
+  ['Музыка для тех,', 'кто уже не дышит'],
+  ['Саундтрек к твоей', 'кунилингической смерти'],
+  ['Едет за теми,', 'кто ещё шевелится'],
+  ['Под эту музыку', 'выносят вперёд ногами'],
 ];
 
 export const SecondPage = ({ active, onNext }: Props) => {
+  const [currentPhraseIndex] = useState(() =>
+    Math.floor(Math.random() * phrases.length),
+  );
+
+  const tagline = phrases[currentPhraseIndex];
+
   const baseDelayMs = 200;
-  const microDelayMs = 150;
-
-  const title = 'НОВЫЙ СИНГЛ';
-  const wordsCount = title.trim().split(/\s+/).filter(Boolean).length;
-
   const wordStepMs = 250;
+  const lineStepMs = 250;
   const blockStepMs = 250;
   const sectionGapMs = 500;
+
+  const wordsCount = title.trim().split(/\s+/).filter(Boolean).length;
 
   const subtitleDelayMs =
     baseDelayMs + (wordsCount - 1) * wordStepMs + blockStepMs;
 
   const subtitle2DelayMs = subtitleDelayMs + blockStepMs;
 
-  const playerBarDelayMs = subtitle2DelayMs + sectionGapMs + blockStepMs;
-  const playerCoverDelayMs = playerBarDelayMs - blockStepMs;
+  const subtitle2EndMs = subtitle2DelayMs + (tagline.length - 1) * lineStepMs;
 
-  const arrowDelayMs = playerBarDelayMs + sectionGapMs + microDelayMs;
+  const playerCoverDelayMs = subtitle2EndMs + sectionGapMs;
+  const playerBarDelayMs = playerCoverDelayMs + blockStepMs;
+
+  const arrowDelayMs = playerBarDelayMs + sectionGapMs + blockStepMs;
 
   return (
     <div className={styles.page} data-active={active ? 'true' : 'false'}>
@@ -79,11 +78,8 @@ export const SecondPage = ({ active, onNext }: Props) => {
         <div className={styles.text}>
           <Title title={title} baseDelayMs={baseDelayMs} />
           <div className={styles.subtitle_container}>
-            <Subtitle subtitle='2026 — Труповозка' delayMs={subtitleDelayMs} />
-            <Subtitle
-              subtitle='Последнее, что ты услышишь в сознании'
-              delayMs={subtitle2DelayMs}
-            />
+            <Subtitle subtitle={releaseLine} delayMs={subtitleDelayMs} />
+            <Subtitle subtitle={tagline} delayMs={subtitle2DelayMs} />
           </div>
         </div>
 

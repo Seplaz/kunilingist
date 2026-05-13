@@ -20,23 +20,23 @@ type Props = {
 const phrases = [
   {
     title: 'СООБЩЕСТВО ТРУПОВОЗКИ',
-    subtitle: 'Вне системы, вне цензуры, только для посвящённых',
+    subtitle: ['Вне системы, вне цензуры,', 'только для посвящённых'],
   },
   {
     title: 'СООБЩЕСТВО ТРУПОВОЗКИ',
-    subtitle: 'Здесь не отписываются. Отсюда выносят',
+    subtitle: ['Здесь не отписываются.', 'Отсюда выносят'],
   },
   {
     title: 'СООБЩЕСТВО ТРУПОВОЗКИ',
-    subtitle: 'Вход — языком. Выход не предусмотрен',
+    subtitle: ['Вход — языком.', 'Выход не предусмотрен'],
   },
   {
     title: 'СООБЩЕСТВО ТРУПОВОЗКИ',
-    subtitle: 'Мы не сообщество. Мы диагноз',
+    subtitle: ['Мы не сообщество.', 'Мы диагноз'],
   },
   {
     title: 'СООБЩЕСТВО ТРУПОВОЗКИ',
-    subtitle: 'Культ, в который не вступают — в него падают',
+    subtitle: ['Культ, в который не вступают —', 'в него падают'],
   },
 ];
 
@@ -49,16 +49,20 @@ export const ThirdPage = ({ active }: Props) => {
 
   const baseDelayMs = 200;
   const wordStepMs = 250;
+  const lineStepMs = 250;
   const blockStepMs = 250;
   const sectionGapMs = 500;
   const iconStepMs = 150;
 
   const wordsCount = phrase.title.trim().split(/\s+/).filter(Boolean).length;
+  const linesCount = phrase.subtitle.length;
 
   const subtitleDelayMs =
     baseDelayMs + (wordsCount - 1) * wordStepMs + blockStepMs;
 
-  const joinDelayMs = subtitleDelayMs + sectionGapMs + blockStepMs;
+  const subtitleEndMs = subtitleDelayMs + (linesCount - 1) * lineStepMs;
+
+  const joinDelayMs = subtitleEndMs + sectionGapMs + blockStepMs;
 
   const iconsBaseDelayMs = joinDelayMs + sectionGapMs + blockStepMs;
 

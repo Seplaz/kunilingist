@@ -1,18 +1,40 @@
+import React from 'react';
 import styles from './Subtitle.module.css';
-
-type Props = { subtitle: string; delayMs?: number };
 
 type CSSVars = React.CSSProperties & {
   '--d'?: string;
+  '--base'?: string;
 };
 
-export const Subtitle = ({ subtitle, delayMs = 0 }: Props) => {
+type Props = {
+  subtitle: string | string[];
+  delayMs?: number;
+  lineStepMs?: number;
+};
+
+export const Subtitle = ({
+  subtitle,
+  delayMs = 0,
+  lineStepMs = 250,
+}: Props) => {
+  const lines = Array.isArray(subtitle) ? subtitle : [subtitle];
+  const ariaLabel = lines.join(' ');
+
   return (
     <h2
       className={styles.subtitle}
-      style={{ '--d': `${delayMs}ms` } as CSSVars}
+      aria-label={ariaLabel}
+      style={{ '--base': `${delayMs}ms` } as CSSVars}
     >
-      {subtitle}
+      {lines.map((line, i) => (
+        <span
+          key={`${line}-${i}`}
+          className={styles.line}
+          style={{ '--d': `${i * lineStepMs}ms` } as CSSVars}
+        >
+          {line}
+        </span>
+      ))}
     </h2>
   );
 };
