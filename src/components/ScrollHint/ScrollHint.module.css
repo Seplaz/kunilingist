@@ -14,8 +14,8 @@
 }
 
 .arrow img {
-	inline-size: 32px;
-	block-size: 41px;
+	inline-size: 30px;
+	block-size: 40px;
 }
 
 .arrow[data-active="true"] {

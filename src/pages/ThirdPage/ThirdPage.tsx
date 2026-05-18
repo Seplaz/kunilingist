@@ -87,14 +87,14 @@ export const ThirdPage = ({ active }: Props) => {
       <picture>
         <source
           media='(min-width: 1024px)'
-          srcSet='/images/pages/page_3/background_3_desktop.webp'
+          srcSet='/images/pages/page_3/background_desktop.webp'
         />
         <source
           media='(min-width: 768px)'
-          srcSet='/images/pages/page_3/background_3_tablet.webp'
+          srcSet='/images/pages/page_3/background_tablet.webp'
         />
         <img
-          src='/images/pages/page_3/background_3.webp'
+          src='/images/pages/page_3/background.webp'
           alt=''
           className={styles.background_image}
           loading='lazy'

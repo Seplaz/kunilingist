@@ -54,14 +54,14 @@ export const SecondPage = ({ active, onNext }: Props) => {
       <picture>
         <source
           media='(min-width: 1024px)'
-          srcSet='/images/pages/page_2/background_2_desktop.webp'
+          srcSet='/images/pages/page_2/background_desktop.webp'
         />
         <source
           media='(min-width: 768px)'
-          srcSet='/images/pages/page_2/background_2_tablet.webp'
+          srcSet='/images/pages/page_2/background_tablet.webp'
         />
         <img
-          src='/images/pages/page_2/background_2.webp'
+          src='/images/pages/page_2/background.webp'
           alt=''
           className={styles.background_image}
           loading='lazy'
